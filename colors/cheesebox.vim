@@ -37,7 +37,8 @@ highlight Todo guifg=#1f1912 guibg=#fbb32f gui=NONE
 highlight Cursor guifg=NONE guibg=NONE gui=reverse
 highlight CursorIM guifg=NONE guibg=NONE gui=reverse
 
-" Use reverse video once again to highlight searches.
+" Use cold highlights for incremental searching and warm highlights for final
+" search results.
 highlight IncSearch guifg=#1f1912 guibg=#8cbdda gui=NONE
 highlight Search guifg=#1f1912 guibg=#fdd182 gui=NONE
 
