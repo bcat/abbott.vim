@@ -38,7 +38,7 @@ highlight CursorLine guibg=#100d0a
 highlight! link CursorColumn CursorLine
 
 " Lighten the background of the right margin.
-highlight ColorColumn guifg=#30271d guibg=NONE gui=reverse
+highlight ColorColumn guibg=#30271d
 
 " Set a vibrant background for visual mode.
 highlight Visual guifg=#0b3302 guibg=#94d900 gui=NONE
