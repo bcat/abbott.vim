@@ -51,3 +51,6 @@ highlight ColorColumn guibg=#30271d
 " Set a vibrant background for visual mode.
 highlight Visual guifg=#0b3302 guibg=#94d900 gui=NONE
 highlight VisualNOS guifg=#0b3302 guibg=#d8ff84 gui=NONE
+
+" Fall back to Special highlighting for imaginary `~` and `@` characters.
+highlight! link NonText Special
