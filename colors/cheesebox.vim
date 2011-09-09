@@ -54,3 +54,6 @@ highlight VisualNOS guifg=#0b3302 guibg=#d8ff84 gui=NONE
 
 " Fall back to Special highlighting for imaginary `~` and `@` characters.
 highlight NonText guifg=#fdd182 guibg=NONE gui=NONE
+
+" Set up custom highlights for bad-whitespace.vim.
+highlight BadWhitespace guifg=#1f1912 guibg=#d80450 gui=NONE
