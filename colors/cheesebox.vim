@@ -17,4 +17,18 @@ endif
 let g:colors_name="cheesebox"
 
 " Set default foreground and background colors.
-highlight Normal guifg=#cff0a7 guibg=#1b1610
+highlight Normal guifg=#d7f2b6 guibg=#1f1912
+
+" Set up highlights for basic syntax groups.
+highlight Comment guifg=#fbb32f guibg=NONE gui=NONE
+highlight Constant guifg=#f63f05 guibg=NONE gui=NONE
+highlight String guifg=#e5e339 guibg=NONE gui=NONE
+highlight link Character String
+highlight Identifier guifg=#8cbdda guibg=NONE gui=NONE
+highlight Statement guifg=#d80450 guibg=NONE gui=bold
+highlight PreProc guifg=#ec6c99 guibg=NONE gui=NONE
+highlight Type guifg=#76bc20 guibg=NONE gui=NONE
+highlight Special guifg=#fdd182 guibg=NONE gui=NONE
+highlight Underlined guifg=#72aed2 guibg=NONE gui=underline
+highlight Error guifg=#d80450 guibg=NONE gui=reverse
+highlight Todo guifg=#fbb32f guibg=NONE gui=reverse
