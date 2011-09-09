@@ -33,6 +33,10 @@ highlight Underlined guifg=#72aed2 guibg=NONE gui=underline
 highlight Error guifg=#d80450 guibg=NONE gui=reverse
 highlight Todo guifg=#fbb32f guibg=NONE gui=reverse
 
+" Use plain old reverse video for the blinking cursor.
+highlight Cursor guifg=NONE guibg=NONE gui=reverse
+highlight! link CursorIM Cursor
+
 " Darken the background of the current line and column.
 highlight CursorLine guibg=#100d0a
 highlight! link CursorColumn CursorLine
