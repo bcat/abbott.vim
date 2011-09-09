@@ -32,3 +32,7 @@ highlight Special guifg=#fdd182 guibg=NONE gui=NONE
 highlight Underlined guifg=#72aed2 guibg=NONE gui=underline
 highlight Error guifg=#d80450 guibg=NONE gui=reverse
 highlight Todo guifg=#fbb32f guibg=NONE gui=reverse
+
+" Set a vibrant background for visual mode.
+highlight Visual guifg=#0b3302 guibg=#94d900 gui=NONE
+highlight VisualNOS guifg=#0b3302 guibg=#d8ff84 gui=NONE
