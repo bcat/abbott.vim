@@ -33,6 +33,13 @@ highlight Underlined guifg=#72aed2 guibg=NONE gui=underline
 highlight Error guifg=#d80450 guibg=NONE gui=reverse
 highlight Todo guifg=#fbb32f guibg=NONE gui=reverse
 
+" Darken the background of the current line and column.
+highlight CursorLine guibg=#100d0a
+highlight! link CursorColumn CursorLine
+
+" Lighten the background of the right margin.
+highlight ColorColumn guifg=#30271d guibg=NONE gui=reverse
+
 " Set a vibrant background for visual mode.
 highlight Visual guifg=#0b3302 guibg=#94d900 gui=NONE
 highlight VisualNOS guifg=#0b3302 guibg=#d8ff84 gui=NONE
