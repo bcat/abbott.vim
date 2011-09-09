@@ -30,8 +30,8 @@ highlight PreProc guifg=#ec6c99 guibg=NONE gui=NONE
 highlight Type guifg=#76bc20 guibg=NONE gui=NONE
 highlight Special guifg=#fdd182 guibg=NONE gui=NONE
 highlight Underlined guifg=#72aed2 guibg=NONE gui=underline
-highlight Error guifg=#d80450 guibg=NONE gui=reverse
-highlight Todo guifg=#fbb32f guibg=NONE gui=reverse
+highlight Error guifg=#1f1912 guibg=#d80450 gui=NONE
+highlight Todo guifg=#1f1912 guibg=#fbb32f gui=NONE
 
 " Use plain old reverse video for the blinking cursor.
 highlight Cursor guifg=NONE guibg=NONE gui=reverse
