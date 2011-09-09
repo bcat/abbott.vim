@@ -37,6 +37,10 @@ highlight Todo guifg=#fbb32f guibg=NONE gui=reverse
 highlight Cursor guifg=NONE guibg=NONE gui=reverse
 highlight! link CursorIM Cursor
 
+" Use reverse video once again to highlight searches.
+highlight! link IncSearch Cursor
+highlight! link Search Cursor
+
 " Darken the background of the current line and column.
 highlight CursorLine guibg=#100d0a
 highlight! link CursorColumn CursorLine
