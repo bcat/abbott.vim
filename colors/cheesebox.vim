@@ -31,7 +31,6 @@ let s:mint_green="#d7f2b6"
 let s:pastel_green="#d8ff84"
 let s:lime_green="#94d900"
 let s:green="#76bc20"
-let s:forest_green="#0b3302"
 
 " Define colors (orange).
 let s:burnt_orange="#f63f05"
@@ -86,8 +85,8 @@ call s:H("CursorColumn", { "bg": s:dark_brown })
 call s:H("ColorColumn", { "bg": s:light_brown })
 
 " Set a vibrant background for visual mode.
-call s:H("Visual", { "fg": s:forest_green, "bg": s:lime_green })
-call s:H("VisualNOS", { "fg": s:forest_green, "bg": s:pastel_green })
+call s:H("Visual", { "fg": s:brown, "bg": s:lime_green })
+call s:H("VisualNOS", { "fg": s:brown, "bg": s:pastel_green })
 
 " Fall back to Special highlighting for imaginary `~` and `@` characters.
 call s:H("NonText", { "fg": s:tan })
