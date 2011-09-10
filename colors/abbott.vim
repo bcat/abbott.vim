@@ -1,10 +1,10 @@
 " Vim color file
-" Name: cheesebox.vim
-" Description: An oddly-named dark Vim color scheme with just a hint of mint
+" Name: abbott.vim
+" Description: An oddly-named dark Vim color scheme
 " Maintainer: Jonathan Rascher <jon@bcat.name>
 " Version: 0.1
 
-" Mark cheesebox.vim as a dark theme.
+" Mark abbott.vim as a dark theme.
 set background=dark
 
 " Reset existing syntax highlights to their default settings.
@@ -14,7 +14,7 @@ if exists("syntax_on")
 endif
 
 " Declare the name of this color scheme.
-let g:colors_name="cheesebox"
+let g:colors_name="abbott"
 
 " Define colors (blue).
 let s:blue="#8cbdda"
