@@ -72,11 +72,6 @@ call s:H("Todo", { "fg": s:brown, "bg": s:orange })
 call s:H("Cursor", { "opt": "reverse" })
 call s:H("CursorIM", { "opt": "reverse" })
 
-" Use cold highlights for incremental searching and warm highlights for final
-" search results.
-call s:H("IncSearch", { "fg": s:brown, "bg": s:blue })
-call s:H("Search", { "fg": s:brown, "bg": s:tan })
-
 " Darken the background of the current line and column.
 call s:H("CursorLine", { "bg": s:dark_brown })
 call s:H("CursorColumn", { "bg": s:dark_brown })
@@ -88,8 +83,36 @@ call s:H("ColorColumn", { "bg": s:light_brown })
 call s:H("Visual", { "fg": s:brown, "bg": s:lime_green })
 call s:H("VisualNOS", { "fg": s:brown, "bg": s:pastel_green })
 
-" Fall back to Special highlighting for imaginary `~` and `@` characters.
-call s:H("NonText", { "fg": s:tan })
+" Set up cool highlights for imaginary `~` and `@` characters as well as
+" special keys.
+call s:H("NonText", { "fg": s:blue })
+call s:H("SpecialKey", { "fg": s:blue })
+
+" Use cold highlights for incremental searching and warm highlights for final
+" search results.
+call s:H("IncSearch", { "fg": s:brown, "bg": s:blue })
+call s:H("Search", { "fg": s:brown, "bg": s:tan })
+
+" Use readable diff highlights. :)
+call s:H("DiffAdd", { "fg": s:brown, "bg": s:green, "opt": "bold" })
+call s:H("DiffChange", { "fg": s:brown, "bg": s:pink })
+call s:H("DiffDelete", { "fg": s:brown, "bg": s:red })
+call s:H("DiffText", { "fg": s:brown, "bg": s:blue, "opt": "bold" })
+
+" Set up highlights for various UI elements.
+call s:H("ErrorMsg", { "fg": s:brown, "bg": s:red })
+call s:H("Folded", { "fg": s:brown, "bg": s:mint_green })
+call s:H("FoldColumn", { "fg": s:brown, "bg": s:mint_green })
+call s:H("LineNr", { "fg": s:yellow })
+call s:H("ModeMsg", { "opt": "bold" })
+call s:H("MoreMsg", { "fg": s:dark_blue, "opt": "bold" })
+call s:H("Question", { "fg": s:pink, "opt": "bold" })
+call s:H("SignColumn", { "fg": s:brown, "bg": s:mint_green })
+call s:H("StatusLine", { "fg": s:brown, "bg": s:blue, "opt": "bold" })
+call s:H("StatusLineNC", { "fg": s:brown, "bg": s:mint_green })
+call s:H("Title", { "fg": s:red, "opt": "bold" })
+call s:H("WarningMsg", { "fg": s:brown, "bg": s:pink })
+call s:H("VertSplit", { "fg": s:brown, "bg": s:mint_green })
 
 " Set up custom highlights for bad-whitespace.vim.
 call s:H("BadWhitespace", { "fg": s:brown, "bg": s:red })
