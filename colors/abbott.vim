@@ -18,13 +18,13 @@ let g:colors_name="abbott"
 
 " Define colors (blue).
 let s:blue="#8cbdda"
-let s:dark_blue="#72aed2"
+let s:dark_blue="#3f91c1"
 
 " Define colors (brown).
 let s:tan="#fdd182"
-let s:light_brown="#30271d"
+let s:light_brown="#32291f"
 let s:brown="#1f1912"
-let s:dark_brown="#100d0a"
+let s:dark_brown="#0a0806"
 
 " Define colors (green).
 let s:mint_green="#d7f2b6"
@@ -36,6 +36,9 @@ let s:green="#76bc20"
 let s:burnt_orange="#f63f05"
 let s:orange="#fbb32f"
 
+" Define colors (purple).
+let s:lavender="#f0d1f6"
+
 " Define colors (red).
 let s:pink="#ec6c99"
 let s:red="#d80450"
@@ -43,11 +46,12 @@ let s:red="#d80450"
 " Define colors (yellow).
 let s:yellow="#e5e339"
 
-" Set up some infrastructure to make using the color variables nicer.
+" Lay down some infrastructure to make using the color variables nicer.
 function! s:H(group, style)
   execute "highlight" a:group
         \ "guifg=" . (has_key(a:style, "fg") ? a:style.fg : "NONE")
         \ "guibg=" . (has_key(a:style, "bg") ? a:style.bg : "NONE")
+        \ "guisp=" . (has_key(a:style, "sp") ? a:style.sp : "NONE")
         \ "gui=" . (has_key(a:style, "opt") ? a:style.opt : "NONE")
 endfunction
 
@@ -57,20 +61,40 @@ call s:H("Normal", { "fg": s:mint_green, "bg": s:brown })
 " Set up highlights for basic syntax groups.
 call s:H("Comment", { "fg": s:orange })
 call s:H("Constant", { "fg": s:burnt_orange })
-call s:H("String", { "fg": s:tan })
-call s:H("Character", { "fg": s:tan })
+call s:H("String", { "fg": s:lavender })
+call s:H("Character", { "fg": s:lavender })
 call s:H("Identifier", { "fg": s:blue })
 call s:H("Statement", { "fg": s:red, "opt": "bold" })
 call s:H("PreProc", { "fg": s:pink })
 call s:H("Type", { "fg": s:green })
 call s:H("Special", { "fg": s:tan })
-call s:H("Underlined", { "fg": s:dark_blue, "opt": "underline" })
+call s:H("Tag", { "fg": s:lavender, "opt": "underline" })
+call s:H("Underlined", { "fg": s:lavender, "opt": "underline" })
 call s:H("Ignore", { "fg": "bg" })
 call s:H("Error", { "fg": s:brown, "bg": s:red })
 call s:H("Todo", { "fg": s:brown, "bg": s:orange })
 
-" Don't do anything special for concealed tokens.
-call s:H("Conceal", {})
+" Set up highlights for various UI elements.
+call s:H("ErrorMsg", { "fg": s:brown, "bg": s:red })
+call s:H("Folded", { "fg": s:brown, "bg": s:mint_green })
+call s:H("FoldColumn", { "fg": s:brown, "bg": s:mint_green })
+call s:H("LineNr", { "fg": s:yellow })
+call s:H("ModeMsg", { "opt": "bold" })
+call s:H("MoreMsg", { "fg": s:dark_blue, "opt": "bold" })
+call s:H("Pmenu", { "bg": s:dark_brown })
+call s:H("PmenuSel", { "fg": s:lavender, "bg": s:light_brown, "opt": "bold" })
+call s:H("PmenuSbar", { "bg": s:light_brown })
+call s:H("PmenuThumb", { "bg": s:dark_blue })
+call s:H("Question", { "fg": s:pink, "opt": "bold" })
+call s:H("SignColumn", { "fg": s:brown, "bg": s:mint_green })
+call s:H("StatusLine", { "fg": s:brown, "bg": s:blue, "opt": "bold" })
+call s:H("StatusLineNC", { "fg": s:brown, "bg": s:mint_green })
+call s:H("TabLine", { "fg": s:brown, "bg": s:mint_green })
+call s:H("TabLineFill", { "bg": s:mint_green })
+call s:H("TabLineSel", { "fg": s:brown, "bg": s:blue, "opt": "bold" })
+call s:H("Title", { "fg": s:red, "opt": "bold" })
+call s:H("WarningMsg", { "fg": s:brown, "bg": s:pink })
+call s:H("VertSplit", { "fg": s:brown, "bg": s:mint_green })
 
 " Use plain old reverse video for the blinking cursor.
 call s:H("Cursor", { "opt": "reverse" })
@@ -83,40 +107,42 @@ call s:H("CursorColumn", { "bg": s:dark_brown })
 " Lighten the background of the right margin.
 call s:H("ColorColumn", { "bg": s:light_brown })
 
+" Highlight matched delimiters in a way that's clearly distinguishable from
+" unmatched delimiter/statement/preprocessor highlighting.
+call s:H("MatchParen",
+      \ { "fg": s:lavender, "bg": s:light_brown, "opt": 'bold' })
+
+" Set up highlights for imaginary `~` and `@` characters as well as special
+" keys.
+call s:H("NonText", { "fg": s:blue })
+call s:H("SpecialKey", { "fg": s:blue })
+
 " Set a vibrant background for visual mode.
 call s:H("Visual", { "fg": s:brown, "bg": s:lime_green })
 call s:H("VisualNOS", { "fg": s:brown, "bg": s:pastel_green })
-
-" Set up cool highlights for imaginary `~` and `@` characters as well as
-" special keys.
-call s:H("NonText", { "fg": s:blue })
-call s:H("SpecialKey", { "fg": s:blue })
 
 " Use cold highlights for incremental searching and warm highlights for final
 " search results.
 call s:H("IncSearch", { "fg": s:brown, "bg": s:blue })
 call s:H("Search", { "fg": s:brown, "bg": s:tan })
 
+" Set up spell-checking in an unobtrusive way.
+call s:H("SpellBad", { "sp": s:red, "opt": "undercurl" })
+call s:H("SpellCap", { "sp": s:blue, "opt": "undercurl" })
+call s:H("SpellLocal", { "sp": s:yellow, "opt": "undercurl" })
+call s:H("SpellRare", { "sp": s:pink, "opt": "undercurl" })
+
+" Don't do anything special for concealed tokens.
+call s:H("Conceal", {})
+
+" Set highlights for directory listings.
+call s:H("Directory", { "fg": s:blue })
+
 " Use readable diff highlights. :)
 call s:H("DiffAdd", { "fg": s:brown, "bg": s:green, "opt": "bold" })
 call s:H("DiffChange", { "fg": s:brown, "bg": s:pink })
 call s:H("DiffDelete", { "fg": s:brown, "bg": s:red })
 call s:H("DiffText", { "fg": s:brown, "bg": s:blue, "opt": "bold" })
-
-" Set up highlights for various UI elements.
-call s:H("ErrorMsg", { "fg": s:brown, "bg": s:red })
-call s:H("Folded", { "fg": s:brown, "bg": s:mint_green })
-call s:H("FoldColumn", { "fg": s:brown, "bg": s:mint_green })
-call s:H("LineNr", { "fg": s:yellow })
-call s:H("ModeMsg", { "opt": "bold" })
-call s:H("MoreMsg", { "fg": s:dark_blue, "opt": "bold" })
-call s:H("Question", { "fg": s:pink, "opt": "bold" })
-call s:H("SignColumn", { "fg": s:brown, "bg": s:mint_green })
-call s:H("StatusLine", { "fg": s:brown, "bg": s:blue, "opt": "bold" })
-call s:H("StatusLineNC", { "fg": s:brown, "bg": s:mint_green })
-call s:H("Title", { "fg": s:red, "opt": "bold" })
-call s:H("WarningMsg", { "fg": s:brown, "bg": s:pink })
-call s:H("VertSplit", { "fg": s:brown, "bg": s:mint_green })
 
 " Set up custom highlights for bad-whitespace.vim.
 call s:H("BadWhitespace", { "fg": s:brown, "bg": s:red })
