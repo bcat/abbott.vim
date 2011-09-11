@@ -37,7 +37,7 @@ let s:burnt_orange="#f63f05"
 let s:orange="#fbb32f"
 
 " Define colors (purple).
-let s:lavender="#f0d1f6"
+let s:lavender="#f6defb"
 
 " Define colors (red).
 let s:pink="#ec6c99"
