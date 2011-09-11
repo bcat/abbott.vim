@@ -94,6 +94,7 @@ call s:H("TabLineFill", { "bg": s:mint_green })
 call s:H("TabLineSel", { "fg": s:brown, "bg": s:blue, "opt": "bold" })
 call s:H("Title", { "fg": s:red, "opt": "bold" })
 call s:H("WarningMsg", { "fg": s:brown, "bg": s:pink })
+call s:H("WildMenu", { "fg": s:brown, "bg": s:mint_green })
 call s:H("VertSplit", { "fg": s:brown, "bg": s:mint_green })
 
 " Use plain old reverse video for the blinking cursor.
