@@ -65,8 +65,12 @@ call s:H("PreProc", { "fg": s:pink })
 call s:H("Type", { "fg": s:green })
 call s:H("Special", { "fg": s:tan })
 call s:H("Underlined", { "fg": s:dark_blue, "opt": "underline" })
+call s:H("Ignore", { "fg": "bg" })
 call s:H("Error", { "fg": s:brown, "bg": s:red })
 call s:H("Todo", { "fg": s:brown, "bg": s:orange })
+
+" Don't do anything special for concealed tokens.
+call s:H("Conceal", {})
 
 " Use plain old reverse video for the blinking cursor.
 call s:H("Cursor", { "opt": "reverse" })
