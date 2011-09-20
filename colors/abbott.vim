@@ -22,8 +22,8 @@ let s:dark_blue="#3f91c1"
 
 " Define colors (brown).
 let s:tan="#fdd182"
-let s:light_brown="#32291f"
-let s:brown="#1f1912"
+let s:light_brown="#342a1e"
+let s:brown="#2a2218"
 let s:dark_brown="#0a0806"
 
 " Define colors (green).
