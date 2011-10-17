@@ -14,13 +14,13 @@ Because hey, it's a color scheme! That's what you really want to see, right?
 
 # Features & characteristics #
 
-*   abbott.vim is a dark theme and only a dark theme.
-*   abbott.vim is not a low contrast theme; however, does attempt to avoid
+*   `abbott.vim` is a dark theme and only a dark theme.
+*   `abbott.vim` is not a low contrast theme; however, does attempt to avoid
     excessive text contrast. Plain text is light green on dark brown rather
     than white on black.
-*   abbott.vim supports all highlight groups featured in Vim 7.3, as well as
+*   `abbott.vim` supports all highlight groups featured in Vim 7.3, as well as
 the [bad-whitespace][2] plugin.
-*   abbott.vim currently sets only GUI colors. Terminal users are encouraged
+*   `abbott.vim` currently sets only GUI colors. Terminal users are encouraged
 to try it with the [CSApprox][3] plugin as this seems to give decent results.
 
 # Future directions #
