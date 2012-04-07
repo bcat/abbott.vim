@@ -17,8 +17,8 @@ endif
 let g:colors_name="abbott"
 
 " Define colors (blue).
-let s:blue="#8cbdda"
-let s:dark_blue="#3f91c1"
+let s:pastel_blue="#8cbdda"
+let s:blue="#3f91e1"
 
 " Define colors (brown).
 let s:tan="#fdd182"
@@ -37,7 +37,7 @@ let s:burnt_orange="#f63f05"
 let s:orange="#fbb32f"
 
 " Define colors (purple).
-let s:lavender="#f6defb"
+let s:lavender="#eec0f7"
 
 " Define colors (red).
 let s:pink="#ec6c99"
@@ -63,7 +63,7 @@ call s:H("Comment", { "fg": s:orange })
 call s:H("Constant", { "fg": s:burnt_orange })
 call s:H("String", { "fg": s:lavender })
 call s:H("Character", { "fg": s:lavender })
-call s:H("Identifier", { "fg": s:blue })
+call s:H("Identifier", { "fg": s:pastel_blue })
 call s:H("Statement", { "fg": s:red, "opt": "bold" })
 call s:H("PreProc", { "fg": s:pink })
 call s:H("Type", { "fg": s:green })
@@ -80,18 +80,18 @@ call s:H("Folded", { "fg": s:brown, "bg": s:mint_green })
 call s:H("FoldColumn", { "fg": s:brown, "bg": s:mint_green })
 call s:H("LineNr", { "fg": s:yellow })
 call s:H("ModeMsg", { "opt": "bold" })
-call s:H("MoreMsg", { "fg": s:dark_blue, "opt": "bold" })
+call s:H("MoreMsg", { "fg": s:blue, "opt": "bold" })
 call s:H("Pmenu", { "bg": s:dark_brown })
 call s:H("PmenuSel", { "fg": s:lavender, "bg": s:light_brown, "opt": "bold" })
 call s:H("PmenuSbar", { "bg": s:light_brown })
-call s:H("PmenuThumb", { "bg": s:dark_blue })
+call s:H("PmenuThumb", { "bg": s:blue })
 call s:H("Question", { "fg": s:pink, "opt": "bold" })
 call s:H("SignColumn", { "fg": s:brown, "bg": s:mint_green })
-call s:H("StatusLine", { "fg": s:brown, "bg": s:blue, "opt": "bold" })
+call s:H("StatusLine", { "fg": s:brown, "bg": s:pastel_blue, "opt": "bold" })
 call s:H("StatusLineNC", { "fg": s:brown, "bg": s:mint_green })
 call s:H("TabLine", { "fg": s:brown, "bg": s:mint_green })
 call s:H("TabLineFill", { "bg": s:mint_green })
-call s:H("TabLineSel", { "fg": s:brown, "bg": s:blue, "opt": "bold" })
+call s:H("TabLineSel", { "fg": s:brown, "bg": s:pastel_blue, "opt": "bold" })
 call s:H("Title", { "fg": s:red, "opt": "bold" })
 call s:H("WarningMsg", { "fg": s:brown, "bg": s:pink })
 call s:H("WildMenu", { "fg": s:brown, "bg": s:mint_green })
@@ -115,8 +115,8 @@ call s:H("MatchParen",
 
 " Set up highlights for imaginary `~` and `@` characters as well as special
 " keys.
-call s:H("NonText", { "fg": s:blue })
-call s:H("SpecialKey", { "fg": s:blue })
+call s:H("NonText", { "fg": s:pastel_blue })
+call s:H("SpecialKey", { "fg": s:pastel_blue })
 
 " Set a vibrant background for visual mode.
 call s:H("Visual", { "fg": s:brown, "bg": s:lime_green })
@@ -124,12 +124,12 @@ call s:H("VisualNOS", { "fg": s:brown, "bg": s:pastel_green })
 
 " Use cold highlights for incremental searching and warm highlights for final
 " search results.
-call s:H("IncSearch", { "fg": s:brown, "bg": s:blue })
+call s:H("IncSearch", { "fg": s:brown, "bg": s:pastel_blue })
 call s:H("Search", { "fg": s:brown, "bg": s:tan })
 
 " Set up spell-checking in an unobtrusive way.
 call s:H("SpellBad", { "sp": s:red, "opt": "undercurl" })
-call s:H("SpellCap", { "sp": s:blue, "opt": "undercurl" })
+call s:H("SpellCap", { "sp": s:pastel_blue, "opt": "undercurl" })
 call s:H("SpellLocal", { "sp": s:yellow, "opt": "undercurl" })
 call s:H("SpellRare", { "sp": s:pink, "opt": "undercurl" })
 
@@ -137,13 +137,13 @@ call s:H("SpellRare", { "sp": s:pink, "opt": "undercurl" })
 call s:H("Conceal", {})
 
 " Set highlights for directory listings.
-call s:H("Directory", { "fg": s:blue })
+call s:H("Directory", { "fg": s:pastel_blue })
 
 " Use readable diff highlights. :)
 call s:H("DiffAdd", { "fg": s:brown, "bg": s:green, "opt": "bold" })
 call s:H("DiffChange", { "fg": s:brown, "bg": s:pink })
 call s:H("DiffDelete", { "fg": s:brown, "bg": s:red })
-call s:H("DiffText", { "fg": s:brown, "bg": s:blue, "opt": "bold" })
+call s:H("DiffText", { "fg": s:brown, "bg": s:pastel_blue, "opt": "bold" })
 
 " Set up custom highlights for bad-whitespace.vim.
 call s:H("BadWhitespace", { "fg": s:brown, "bg": s:red })
