@@ -17,7 +17,7 @@ endif
 let g:colors_name="abbott"
 
 " Tell the CSApprox plugin not to override the default terminal background.
-let g:CSApprox_hook_abbott_post = "hi Normal ctermbg=NONE"
+let g:CSApprox_hook_abbott_post="hi Normal ctermbg=NONE"
 
 " Define colors (blue).
 let s:pastel_blue="#8cbdda"
