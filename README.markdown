@@ -8,7 +8,7 @@ real analysis homework and drinking copious amounts of Mountain Dew.
 
 Because hey, it's a color scheme! That's what you really want to see, right?
 
-![(abbott.vim editing this README)](http://i.imgur.com/9jbDG.png)
+![(abbott.vim editing this README)](http://i.imgur.com/RHcRw.png)
 
 ([More here.][1])
 
