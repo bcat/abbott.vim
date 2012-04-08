@@ -24,8 +24,8 @@ let s:pastel_blue="#8ccdea"
 let s:blue="#3f91f1"
 
 " Define colors (brown).
-let s:tan="#fdd182"
-let s:light_brown="#403324"
+let s:tan="#fee3b4"
+let s:light_brown="#816749"
 let s:brown="#1f1912"
 let s:dark_brown="#0a0806"
 
