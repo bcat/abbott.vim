@@ -20,8 +20,8 @@ let g:colors_name="abbott"
 let g:CSApprox_hook_abbott_post="hi Normal ctermbg=NONE"
 
 " Define colors (blue).
-let s:pastel_blue="#8cbdda"
-let s:blue="#3f91e1"
+let s:pastel_blue="#8ccdea"
+let s:blue="#3f91f1"
 
 " Define colors (brown).
 let s:tan="#fdd182"
@@ -40,7 +40,7 @@ let s:burnt_orange="#f63f05"
 let s:orange="#fbb32f"
 
 " Define colors (purple).
-let s:lavender="#eec0f7"
+let s:lavender="#e6a2f3"
 
 " Define colors (red).
 let s:pink="#ec6c99"
