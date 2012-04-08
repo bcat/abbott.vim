@@ -108,8 +108,8 @@ call s:H("CursorIM", { "opt": "reverse" })
 call s:H("CursorLine", { "bg": s:dark_brown })
 call s:H("CursorColumn", { "bg": s:dark_brown })
 
-" Lighten the background of the right margin.
-call s:H("ColorColumn", { "bg": s:light_brown })
+" Darken the background of the right margin.
+call s:H("ColorColumn", { "bg": s:dark_brown })
 
 " Highlight matched delimiters in a way that's clearly distinguishable from
 " unmatched delimiter/statement/preprocessor highlighting.
