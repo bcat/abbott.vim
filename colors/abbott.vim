@@ -2,7 +2,7 @@
 " Name: abbott.vim
 " Description: An oddly-named dark Vim color scheme
 " Maintainer: Jonathan Rascher <jon@bcat.name>
-" Version: 1.1
+" Version: 1.1.1
 
 " Mark abbott.vim as a dark theme.
 set background=dark
