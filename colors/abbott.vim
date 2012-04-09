@@ -20,7 +20,7 @@ let g:colors_name="abbott"
 let g:CSApprox_hook_abbott_post="hi Normal ctermbg=NONE"
 
 " Define colors (blue).
-let s:pastel_blue="#8ccdea"
+let s:pastel_blue="#8ccdf0"
 let s:blue="#3f91f1"
 
 " Define colors (brown).
@@ -79,8 +79,8 @@ call s:H("Todo", { "fg": s:brown, "bg": s:orange })
 
 " Set up highlights for various UI elements.
 call s:H("ErrorMsg", { "fg": s:brown, "bg": s:red })
-call s:H("Folded", { "fg": s:brown, "bg": s:mint_green })
-call s:H("FoldColumn", { "fg": s:brown, "bg": s:mint_green })
+call s:H("Folded", { "fg": s:brown, "bg": s:pastel_blue })
+call s:H("FoldColumn", { "fg": s:brown, "bg": s:pastel_blue })
 call s:H("LineNr", { "fg": s:yellow })
 call s:H("ModeMsg", { "opt": "bold" })
 call s:H("MoreMsg", { "fg": s:blue, "opt": "bold" })
