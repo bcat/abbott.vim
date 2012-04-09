@@ -115,7 +115,7 @@ call s:H("ColorColumn", { "bg": s:dark_brown })
 " Highlight matched delimiters in a way that's clearly distinguishable from
 " unmatched delimiter/statement/preprocessor highlighting.
 call s:H("MatchParen",
-      \ { "fg": s:lavender, "bg": s:light_brown, "opt": 'bold' })
+      \ { "fg": s:dark_brown, "bg": s:light_brown, "opt": 'bold' })
 
 " Set up highlights for imaginary `~` and `@` characters as well as special
 " keys.
