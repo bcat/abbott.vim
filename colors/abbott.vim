@@ -30,7 +30,7 @@ let s:brown="#1f1912"
 let s:dark_brown="#0a0806"
 
 " Define colors (green).
-let s:mint_green="#d5fac8"
+let s:mint_green="#bdf7a9"
 let s:pastel_green="#d8ff84"
 let s:lime_green="#94d900"
 let s:green="#76bc20"
