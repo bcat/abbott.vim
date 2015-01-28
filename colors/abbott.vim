@@ -101,8 +101,9 @@ call s:H("WildMenu", { "fg": s:brown, "bg": s:mint_green })
 call s:H("VertSplit", { "fg": s:brown, "bg": s:mint_green })
 
 " Use plain old reverse video for the blinking cursor.
-call s:H("Cursor", { "fg": "fg", "bg": "bg", "opt": "reverse" })
-call s:H("CursorIM", { "fg": "fg", "bg": "bg", "opt": "reverse" })
+" Use an eye-catching shade of green for the blinking cursor.
+call s:H("Cursor", { "fg": s:brown, "bg": s:green })
+call s:H("CursorIM", { "fg": s:brown, "bg": s:green })
 
 " Darken the background of the current line and column.
 call s:H("CursorLine", { "bg": s:dark_brown })
