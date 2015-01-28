@@ -19,6 +19,9 @@ let g:colors_name="abbott"
 " Tell the CSApprox plugin not to override the default terminal background.
 let g:CSApprox_hook_abbott_post="hi Normal ctermbg=NONE"
 
+" Define colors (grayscale).
+let s:black="#000000"
+
 " Define colors (blue).
 let s:pastel_blue="#8ccdf0"
 let s:blue="#3f91f1"
@@ -27,7 +30,6 @@ let s:blue="#3f91f1"
 let s:tan="#fee3b4"
 let s:light_brown="#816749"
 let s:brown="#1f1912"
-let s:dark_brown="#0a0806"
 
 " Define colors (green).
 let s:mint_green="#bdf7a9"
@@ -84,9 +86,9 @@ call s:H("FoldColumn", { "fg": s:brown, "bg": s:pastel_blue })
 call s:H("LineNr", { "fg": s:yellow })
 call s:H("ModeMsg", { "opt": "bold" })
 call s:H("MoreMsg", { "fg": s:blue, "opt": "bold" })
-call s:H("Pmenu", { "fg": s:dark_brown, "bg": s:light_brown })
-call s:H("PmenuSel", { "fg": s:dark_brown, "bg": s:tan, "opt": "bold" })
-call s:H("PmenuSbar", { "bg": s:dark_brown })
+call s:H("Pmenu", { "fg": s:black, "bg": s:light_brown })
+call s:H("PmenuSel", { "fg": s:black, "bg": s:tan, "opt": "bold" })
+call s:H("PmenuSbar", { "bg": s:black })
 call s:H("PmenuThumb", { "bg": s:blue })
 call s:H("Question", { "fg": s:pink, "opt": "bold" })
 call s:H("SignColumn", { "fg": s:brown, "bg": s:mint_green })
@@ -106,16 +108,15 @@ call s:H("Cursor", { "fg": s:brown, "bg": s:green })
 call s:H("CursorIM", { "fg": s:brown, "bg": s:green })
 
 " Darken the background of the current line and column.
-call s:H("CursorLine", { "bg": s:dark_brown })
-call s:H("CursorColumn", { "bg": s:dark_brown })
+call s:H("CursorLine", { "bg": s:black })
+call s:H("CursorColumn", { "bg": s:black })
 
 " Darken the background of the right margin.
-call s:H("ColorColumn", { "bg": s:dark_brown })
+call s:H("ColorColumn", { "bg": s:black })
 
 " Highlight matched delimiters in a way that's clearly distinguishable from
 " unmatched delimiter/statement/preprocessor highlighting.
-call s:H("MatchParen",
-      \ { "fg": s:dark_brown, "bg": s:light_brown, "opt": 'bold' })
+call s:H("MatchParen", { "fg": s:black, "bg": s:light_brown, "opt": 'bold' })
 
 " Set up highlights for imaginary `~` and `@` characters as well as special
 " keys.
