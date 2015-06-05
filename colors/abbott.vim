@@ -18,9 +18,6 @@
 " OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 " PERFORMANCE OF THIS SOFTWARE.
 
-" Color constants, grayscale:
-let s:black = '#000000'
-
 " Color constants, brown:
 let s:tan = '#fee3b4'
 let s:light_brown = '#816749'
@@ -31,7 +28,7 @@ let s:pink = '#ec6c99'
 let s:red = '#d80450'
 
 " Color constants, yellow:
-let s:yellow = '#e5e339'
+let s:yellow = '#fbec5d'
 
 " Color constants, orange:
 let s:burnt_orange = '#f63f05'
@@ -40,8 +37,9 @@ let s:orange = '#fbb32f'
 " Color constants, green:
 let s:mint_green = '#bdf7a9'
 let s:pastel_green = '#d8ff84'
-let s:lime_green = '#94d900'
-let s:green = '#76bc20'
+let s:lime_green = '#a0ea00'
+let s:green = '#7fcb22'
+let s:forest_green = '#24a507'
 
 " Color constants, blue:
 let s:pastel_blue = '#8ccdf0'
@@ -92,7 +90,7 @@ call s:H('Character', {'fg': s:lavender})
 call s:H('Identifier', {'fg': s:pastel_blue})
 call s:H('Statement', {'fg': s:red, 'attrs': 'bold'})
 call s:H('PreProc', {'fg': s:pink})
-call s:H('Type', {'fg': s:green})
+call s:H('Type', {'fg': s:forest_green})
 call s:H('Special', {'fg': s:tan})
 call s:H('Tag', {'fg': s:lavender, 'attrs': 'underline'})
 call s:H('Underlined', {'fg': s:lavender, 'attrs': 'underline'})
@@ -102,14 +100,14 @@ call s:H('Todo', {'fg': s:brown, 'bg': s:orange})
 
 " Set up highlights for various UI elements.
 call s:H('ErrorMsg', {'fg': s:brown, 'bg': s:red})
-call s:H('Folded', {'fg': s:brown, 'bg': s:pastel_blue})
+call s:H('FoldColumn', {'fg': s:brown, 'bg': s:pastel_blue})
 call s:H('FoldColumn', {'fg': s:brown, 'bg': s:pastel_blue})
 call s:H('LineNr', {'fg': s:yellow})
 call s:H('ModeMsg', {'attrs': 'bold'})
 call s:H('MoreMsg', {'fg': s:blue, 'attrs': 'bold'})
-call s:H('Pmenu', {'fg': s:black, 'bg': s:light_brown})
-call s:H('PmenuSel', {'fg': s:black, 'bg': s:tan, 'attrs': 'bold'})
-call s:H('PmenuSbar', {'bg': s:black})
+call s:H('Pmenu', {'fg': s:brown, 'bg': s:light_brown})
+call s:H('PmenuSel', {'fg': s:brown, 'bg': s:tan, 'attrs': 'bold'})
+call s:H('PmenuSbar', {'bg': s:brown})
 call s:H('PmenuThumb', {'bg': s:blue})
 call s:H('Question', {'fg': s:pink, 'attrs': 'bold'})
 call s:H('SignColumn', {'fg': s:brown, 'bg': s:mint_green})
@@ -129,15 +127,15 @@ call s:H('Cursor', {'fg': s:brown, 'bg': s:green})
 call s:H('CursorIM', {'fg': s:brown, 'bg': s:green})
 
 " Darken the background of the current line and column.
-call s:H('CursorLine', {'bg': s:black})
-call s:H('CursorColumn', {'bg': s:black})
+call s:H('CursorLine', {'bg': s:brown})
+call s:H('CursorColumn', {'bg': s:brown})
 
 " Darken the background of the right margin.
 call s:H('ColorColumn', {'fg': s:brown, 'bg': s:tan})
 
 " Highlight matched delimiters in a way that's clearly distinguishable from
 " unmatched delimiter/statement/preprocessor highlighting.
-call s:H('MatchParen', {'fg': s:black, 'bg': s:light_brown, 'attrs': 'bold'})
+call s:H('MatchParen', {'fg': s:brown, 'bg': s:light_brown, 'attrs': 'bold'})
 
 " Set up highlights for imaginary '~' and '@' characters, and for special keys.
 call s:H('NonText', {'fg': s:pastel_blue})
