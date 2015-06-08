@@ -18,9 +18,6 @@
 " OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 " PERFORMANCE OF THIS SOFTWARE.
 
-" Color constants, defaults:
-let s:background = {'rgb': 'bg', 'color16': 'bg'}
-
 " Color constants, brown:
 let s:tan = {'rgb': '#fee3b4', 'color16': '7'}
 let s:light_brown = {'rgb': '#816749', 'color16': '8'}
@@ -98,7 +95,7 @@ call s:H('Type', {'fg': s:forest_green})
 call s:H('Special', {'fg': s:tan})
 call s:H('Tag', {'fg': s:lavender, 'attrs': 'underline'})
 call s:H('Underlined', {'fg': s:lavender, 'attrs': 'underline'})
-call s:H('Ignore', {'fg': s:background})
+call s:H('Ignore', {'fg': s:light_brown})
 call s:H('Error', {'fg': s:brown, 'bg': s:red})
 call s:H('Todo', {'fg': s:brown, 'bg': s:orange})
 
