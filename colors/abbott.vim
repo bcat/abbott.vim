@@ -39,14 +39,14 @@ let s:orange = {'rgb': '#fbb32f', 'color16': '3'}
 
 " Color constants, green:
 let s:mint_green = {'rgb': '#bdf7a9', 'color16': '15'}
-let s:pastel_green = {'rgb': '#d8ff84', 'color16': '14'}
-let s:lime_green = {'rgb': '#a0ea00', 'color16': '6'}
+let s:pastel_green = {'rgb': '#d8ff84', 'color16': '12'}
+let s:lime_green = {'rgb': '#a0ea00', 'color16': '4'}
 let s:green = {'rgb': '#7fcb22', 'color16': '10'}
 let s:forest_green = {'rgb': '#24a507', 'color16': '2'}
 
 " Color constants, blue:
-let s:pastel_blue = {'rgb': '#8ccdf0', 'color16': '12'}
-let s:blue = {'rgb': '#3f91f1', 'color16': '4'}
+let s:pastel_blue = {'rgb': '#8ccdf0', 'color16': '14'}
+let s:blue = {'rgb': '#3f91f1', 'color16': '6'}
 
 " Color constants, violet:
 let s:lavender = {'rgb': '#e6a2f3', 'color16': '13'}
