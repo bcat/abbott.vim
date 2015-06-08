@@ -76,9 +76,6 @@ endif
 " Declare the name of this color scheme.
 let g:colors_name = 'abbott'
 
-" Tell the CSApprox plugin not to override the default terminal background.
-let g:CSApprox_hook_abbott_post = 'highlight Normal ctermbg=NONE'
-
 " Set default foreground and background colors.
 call s:H('Normal', {'fg': s:mint_green, 'bg': s:brown})
 
