@@ -56,7 +56,7 @@ let s:lavender = {'rgb': '#e6a2f3', 'color16': '13'}
 " respectively. Additionally, the 'attrs' key, if present, should map to a
 " string containing comma-separated terminal attributes.
 function! s:H(group, style)
-  execute 'highlight' a:group 'TERM=NONE'
+  execute 'highlight' a:group 'term=NONE'
       \ 'ctermfg=' . (has_key(a:style, 'sp') ? a:style.sp.color16
           \ : has_key(a:style, 'fg') ? a:style.fg.color16 : 'NONE')
       \ 'ctermbg=' . (has_key(a:style, 'bg') ? a:style.bg.color16 : 'NONE')
