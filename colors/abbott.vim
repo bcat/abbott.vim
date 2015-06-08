@@ -18,35 +18,38 @@
 " OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 " PERFORMANCE OF THIS SOFTWARE.
 
+" Color constants, defaults:
+let s:background = {'rgb': 'bg', 'color16': 'bg'}
+
 " Color constants, brown:
-let s:tan = '#fee3b4'
-let s:light_brown = '#816749'
-let s:brown = '#1f1912'
+let s:tan = {'rgb': '#fee3b4', 'color16': '7'}
+let s:light_brown = {'rgb': '#816749', 'color16': '8'}
+let s:brown = {'rgb': '#1f1912', 'color16': '0'}
 
 " Color constants, red:
-let s:pink = '#ec6c99'
-let s:red = '#d80450'
+let s:pink = {'rgb': '#ec6c99', 'color16': '5'}
+let s:red = {'rgb': '#d80450', 'color16': '1'}
 
 " Color constants, yellow:
-let s:yellow = '#fbec5d'
+let s:yellow = {'rgb': '#fbec5d', 'color16': '11'}
 
 " Color constants, orange:
-let s:burnt_orange = '#f63f05'
-let s:orange = '#fbb32f'
+let s:burnt_orange = {'rgb': '#f63f05', 'color16': '9'}
+let s:orange = {'rgb': '#fbb32f', 'color16': '3'}
 
 " Color constants, green:
-let s:mint_green = '#bdf7a9'
-let s:pastel_green = '#d8ff84'
-let s:lime_green = '#a0ea00'
-let s:green = '#7fcb22'
-let s:forest_green = '#24a507'
+let s:mint_green = {'rgb': '#bdf7a9', 'color16': '15'}
+let s:pastel_green = {'rgb': '#d8ff84', 'color16': '14'}
+let s:lime_green = {'rgb': '#a0ea00', 'color16': '6'}
+let s:green = {'rgb': '#7fcb22', 'color16': '10'}
+let s:forest_green = {'rgb': '#24a507', 'color16': '2'}
 
 " Color constants, blue:
-let s:pastel_blue = '#8ccdf0'
-let s:blue = '#3f91f1'
+let s:pastel_blue = {'rgb': '#8ccdf0', 'color16': '12'}
+let s:blue = {'rgb': '#3f91f1', 'color16': '4'}
 
 " Color constants, violet:
-let s:lavender = '#e6a2f3'
+let s:lavender = {'rgb': '#e6a2f3', 'color16': '13'}
 
 
 ""
@@ -56,10 +59,13 @@ let s:lavender = '#e6a2f3'
 " respectively. Additionally, the 'attrs' key, if present, should map to a
 " string containing comma-separated terminal attributes.
 function! s:H(group, style)
-  execute 'highlight' a:group
-      \ 'guifg=' . (has_key(a:style, 'fg') ? a:style.fg : 'NONE')
-      \ 'guibg=' . (has_key(a:style, 'bg') ? a:style.bg : 'NONE')
-      \ 'guisp=' . (has_key(a:style, 'sp') ? a:style.sp : 'NONE')
+  execute 'highlight' a:group 'TERM=NONE'
+      \ 'ctermfg=' . (has_key(a:style, 'fg') ? a:style.fg.color16 : 'NONE')
+      \ 'ctermbg=' . (has_key(a:style, 'bg') ? a:style.bg.color16 : 'NONE')
+      \ 'cterm=' . (has_key(a:style, 'attrs') ? a:style.attrs : 'NONE')
+      \ 'guifg=' . (has_key(a:style, 'fg') ? a:style.fg.rgb : 'NONE')
+      \ 'guibg=' . (has_key(a:style, 'bg') ? a:style.bg.rgb : 'NONE')
+      \ 'guisp=' . (has_key(a:style, 'sp') ? a:style.sp.rgb : 'NONE')
       \ 'gui=' . (has_key(a:style, 'attrs') ? a:style.attrs : 'NONE')
 endfunction
 
@@ -91,7 +97,7 @@ call s:H('Type', {'fg': s:forest_green})
 call s:H('Special', {'fg': s:tan})
 call s:H('Tag', {'fg': s:lavender, 'attrs': 'underline'})
 call s:H('Underlined', {'fg': s:lavender, 'attrs': 'underline'})
-call s:H('Ignore', {'fg': 'bg'})
+call s:H('Ignore', {'fg': s:background})
 call s:H('Error', {'fg': s:brown, 'bg': s:red})
 call s:H('Todo', {'fg': s:brown, 'bg': s:orange})
 
