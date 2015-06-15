@@ -139,16 +139,16 @@ call s:H('ColorColumn', {'fg': s:brown, 'bg': s:tan})
 call s:H('MatchParen', {'fg': s:brown, 'bg': s:light_brown, 'attrs': 'bold'})
 
 " Set up highlights for imaginary '~' and '@' characters, and for special keys.
-call s:H('NonText', {'fg': s:pastel_blue})
-call s:H('SpecialKey', {'fg': s:pastel_blue})
+call s:H('NonText', {'fg': s:teal})
+call s:H('SpecialKey', {'fg': s:teal})
 
 " Set a vibrant background for visual mode.
 call s:H('Visual', {'fg': s:brown, 'bg': s:green})
-call s:H('VisualNOS', {'fg': s:brown, 'bg': s:pastel_green})
+call s:H('VisualNOS', {'fg': s:brown, 'bg': s:mint_green})
 
 " Use cold highlights for incremental searching and warm highlights for final
 " search results.
-call s:H('IncSearch', {'fg': s:brown, 'bg': s:pastel_blue})
+call s:H('IncSearch', {'fg': s:brown, 'bg': s:teal})
 call s:H('Search', {'fg': s:brown, 'bg': s:tan})
 
 " Set up spell-checking in an unobtrusive way.
@@ -167,7 +167,7 @@ call s:H('Directory', {'fg': s:pastel_blue})
 call s:H('DiffAdd', {'fg': s:brown, 'bg': s:green, 'attrs': 'bold'})
 call s:H('DiffChange', {'fg': s:brown, 'bg': s:pink})
 call s:H('DiffDelete', {'fg': s:brown, 'bg': s:red})
-call s:H('DiffText', {'fg': s:brown, 'bg': s:pastel_blue, 'attrs': 'bold'})
+call s:H('DiffText', {'fg': s:brown, 'bg': s:teal, 'attrs': 'bold'})
 
 " Set up custom highlights for bad-whitespace.vim.
 call s:H('BadWhitespace', {'fg': s:brown, 'bg': s:red})
