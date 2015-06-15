@@ -19,7 +19,7 @@
 " PERFORMANCE OF THIS SOFTWARE.
 
 " Color constants, brown:
-let s:tan = {'rgb': '#fee3b4', 'color16': '7'}
+let s:tan = {'rgb': '#fef3b4', 'color16': '15'}
 let s:light_brown = {'rgb': '#816749', 'color16': '8'}
 let s:brown = {'rgb': '#1f1912', 'color16': '0'}
 
@@ -35,15 +35,15 @@ let s:burnt_orange = {'rgb': '#f63f05', 'color16': '9'}
 let s:orange = {'rgb': '#fbb32f', 'color16': '3'}
 
 " Color constants, green:
-let s:mint_green = {'rgb': '#bdf7a9', 'color16': '15'}
-let s:pastel_green = {'rgb': '#d8ff84', 'color16': '12'}
-let s:lime_green = {'rgb': '#a0ea00', 'color16': '4'}
-let s:green = {'rgb': '#7fcb22', 'color16': '10'}
+let s:mint_green = {'rgb': '#d8ff84', 'color16': '14'}
+let s:pastel_green = {'rgb': '#c0f396', 'color16': '7'}
+let s:green = {'rgb': '#a0ea00', 'color16': '10'}
 let s:forest_green = {'rgb': '#24a507', 'color16': '2'}
 
 " Color constants, blue:
-let s:pastel_blue = {'rgb': '#8ccdf0', 'color16': '14'}
-let s:blue = {'rgb': '#3f91f1', 'color16': '6'}
+let s:teal = {'rgb': '#59eea5', 'color16': '6'}
+let s:pastel_blue = {'rgb': '#8ccdf0', 'color16': '12'}
+let s:blue = {'rgb': '#3f91f1', 'color16': '4'}
 
 " Color constants, violet:
 let s:lavender = {'rgb': '#e6a2f3', 'color16': '13'}
@@ -81,7 +81,7 @@ endif
 let g:colors_name = 'abbott'
 
 " Set default foreground and background colors.
-call s:H('Normal', {'fg': s:mint_green, 'bg': s:brown})
+call s:H('Normal', {'fg': s:pastel_green, 'bg': s:brown})
 
 " Set up highlights for basic syntax groups.
 call s:H('Comment', {'fg': s:orange})
@@ -111,16 +111,16 @@ call s:H('PmenuSel', {'fg': s:brown, 'bg': s:tan, 'attrs': 'bold'})
 call s:H('PmenuSbar', {'bg': s:brown})
 call s:H('PmenuThumb', {'bg': s:blue})
 call s:H('Question', {'fg': s:pink, 'attrs': 'bold'})
-call s:H('SignColumn', {'fg': s:brown, 'bg': s:mint_green})
+call s:H('SignColumn', {'fg': s:brown, 'bg': s:pastel_green})
 call s:H('StatusLine', {'fg': s:brown, 'bg': s:pastel_blue, 'attrs': 'bold'})
-call s:H('StatusLineNC', {'fg': s:brown, 'bg': s:mint_green})
-call s:H('TabLine', {'fg': s:brown, 'bg': s:mint_green})
-call s:H('TabLineFill', {'bg': s:mint_green})
+call s:H('StatusLineNC', {'fg': s:brown, 'bg': s:pastel_green})
+call s:H('TabLine', {'fg': s:brown, 'bg': s:pastel_green})
+call s:H('TabLineFill', {'bg': s:pastel_green})
 call s:H('TabLineSel', {'fg': s:brown, 'bg': s:pastel_blue, 'attrs': 'bold'})
 call s:H('Title', {'fg': s:red, 'attrs': 'bold'})
 call s:H('WarningMsg', {'fg': s:brown, 'bg': s:pink})
-call s:H('WildMenu', {'fg': s:brown, 'bg': s:mint_green})
-call s:H('VertSplit', {'fg': s:brown, 'bg': s:mint_green})
+call s:H('WildMenu', {'fg': s:brown, 'bg': s:pastel_green})
+call s:H('VertSplit', {'fg': s:brown, 'bg': s:pastel_green})
 
 " Use plain old reverse video for the blinking cursor.
 " Use an eye-catching shade of green for the blinking cursor.
@@ -143,7 +143,7 @@ call s:H('NonText', {'fg': s:pastel_blue})
 call s:H('SpecialKey', {'fg': s:pastel_blue})
 
 " Set a vibrant background for visual mode.
-call s:H('Visual', {'fg': s:brown, 'bg': s:lime_green})
+call s:H('Visual', {'fg': s:brown, 'bg': s:green})
 call s:H('VisualNOS', {'fg': s:brown, 'bg': s:pastel_green})
 
 " Use cold highlights for incremental searching and warm highlights for final
