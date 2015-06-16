@@ -35,13 +35,13 @@ let s:burnt_orange = {'rgb': '#f63f05', 'color16': '9'}
 let s:orange = {'rgb': '#fbb32f', 'color16': '3'}
 
 " Color constants, green:
-let s:mint_green = {'rgb': '#d8ff84', 'color16': '14'}
+let s:mint_green = {'rgb': '#d8ff84', 'color16': '6'}
 let s:pastel_green = {'rgb': '#c0f396', 'color16': '7'}
 let s:green = {'rgb': '#a0ea00', 'color16': '10'}
 let s:forest_green = {'rgb': '#24a507', 'color16': '2'}
 
 " Color constants, blue:
-let s:teal = {'rgb': '#59eea5', 'color16': '6'}
+let s:teal = {'rgb': '#59eea5', 'color16': '14'}
 let s:pastel_blue = {'rgb': '#8ccdf0', 'color16': '12'}
 let s:blue = {'rgb': '#3f91f1', 'color16': '4'}
 
