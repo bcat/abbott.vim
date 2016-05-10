@@ -4,7 +4,7 @@
 " Maintainer: Jonathan Rascher <jon@bcat.name>
 " Version: 1.3
 
-" Copyright © 2011-15 Jonathan Rascher.
+" Copyright © 2011-16 Jonathan Rascher.
 "
 " Permission to use, copy, modify, and/or distribute this software for any
 " purpose with or without fee is hereby granted, provided that the above
