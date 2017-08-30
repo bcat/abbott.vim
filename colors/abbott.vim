@@ -19,34 +19,34 @@
 " PERFORMANCE OF THIS SOFTWARE.
 
 " Color constants, brown:
-let s:tan = {'rgb': '#fef3b4', 'color16': '15'}
-let s:light_brown = {'rgb': '#816749', 'color16': '8'}
-let s:brown = {'rgb': '#1f1912', 'color16': '0'}
+let s:tan = {'rgb': '#fef3b4', 'color256': '', 'color16': '15'}
+let s:light_brown = {'rgb': '#816749', 'color256': '', 'color16': '8'}
+let s:brown = {'rgb': '#1f1912', 'color256': '', 'color16': '0'}
 
 " Color constants, red:
-let s:pink = {'rgb': '#ec6c99', 'color16': '5'}
-let s:red = {'rgb': '#d80450', 'color16': '1'}
+let s:pink = {'rgb': '#ec6c99', 'color256': '', 'color16': '5'}
+let s:red = {'rgb': '#d80450', 'color256': '', 'color16': '1'}
 
 " Color constants, yellow:
-let s:yellow = {'rgb': '#fbec5d', 'color16': '11'}
+let s:yellow = {'rgb': '#fbec5d', 'color256': '', 'color16': '11'}
 
 " Color constants, orange:
-let s:burnt_orange = {'rgb': '#f63f05', 'color16': '9'}
-let s:orange = {'rgb': '#fbb32f', 'color16': '3'}
+let s:burnt_orange = {'rgb': '#f63f05', 'color256': '', 'color16': '9'}
+let s:orange = {'rgb': '#fbb32f', 'color256': '', 'color16': '3'}
 
 " Color constants, green:
-let s:mint_green = {'rgb': '#d8ff84', 'color16': '6'}
-let s:pastel_green = {'rgb': '#c0f396', 'color16': '7'}
-let s:green = {'rgb': '#a0ea00', 'color16': '10'}
-let s:forest_green = {'rgb': '#24a507', 'color16': '2'}
+let s:mint_green = {'rgb': '#d8ff84', 'color256': '', 'color16': '6'}
+let s:pastel_green = {'rgb': '#c0f396', 'color256': '', 'color16': '7'}
+let s:green = {'rgb': '#a0ea00', 'color256': '', 'color16': '10'}
+let s:forest_green = {'rgb': '#24a507', 'color256': '', 'color16': '2'}
 
 " Color constants, blue:
-let s:teal = {'rgb': '#59eea5', 'color16': '14'}
-let s:pastel_blue = {'rgb': '#8ccdf0', 'color16': '12'}
-let s:blue = {'rgb': '#3f91f1', 'color16': '4'}
+let s:teal = {'rgb': '#59eea5', 'color256': '', 'color16': '14'}
+let s:pastel_blue = {'rgb': '#8ccdf0', 'color256': '', 'color16': '12'}
+let s:blue = {'rgb': '#3f91f1', 'color256': '', 'color16': '4'}
 
 " Color constants, violet:
-let s:lavender = {'rgb': '#e6a2f3', 'color16': '13'}
+let s:lavender = {'rgb': '#e6a2f3', 'color256': '', 'color16': '13'}
 
 
 ""
