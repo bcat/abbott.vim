@@ -1,5 +1,5 @@
 " abbott.vim <https://github.com/bcat/abbott.vim>
-
+"
 " Copyright 2011-2013, 2015, 2017, 2020 Jonathan Rascher
 "
 " Permission to use, copy, modify, and/or distribute this software for any
@@ -44,8 +44,6 @@ let s:blue = {'rgb': '#3f91f1', 'color256': '', 'color16': '4'}
 " Color constants, violet:
 let s:lavender = {'rgb': '#e6a2f3', 'color256': '', 'color16': '13'}
 
-
-""
 " Highlights {group} according to the configuration given in {style}. The style
 " dictionary may have color constant values with keys 'fg', 'bg', and 'sp' to
 " set the highlight group's foreground, background, and undercurl colors,
@@ -63,13 +61,12 @@ function! s:H(group, style)
       \ 'gui=' . (has_key(a:style, 'attrs') ? a:style.attrs : 'NONE')
 endfunction
 
-
 " Mark abbott.vim as a dark theme.
 set background=dark
 
 " Reset existing syntax highlights to their default settings.
 highlight clear
-if exists('syntax_on')
+if exists('g:syntax_on')
   syntax reset
 endif
 
