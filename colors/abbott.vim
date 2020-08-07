@@ -1,8 +1,4 @@
-" Vim color file
-" Name: abbott.vim
-" Description: An oddly named dark Vim color scheme
-" Maintainer: Jonathan Rascher <jon@bcat.name>
-" Version: 1.3
+" abbott.vim <https://github.com/bcat/abbott.vim>
 
 " Copyright 2011-2013, 2015, 2017, 2020 Jonathan Rascher
 "
