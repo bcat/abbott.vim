@@ -77,7 +77,7 @@ let g:colors_name = 'abbott'
 call s:H('Normal', {'fg': s:pastel_green, 'bg': s:brown})
 
 " Set up highlights for basic syntax groups.
-call s:H('Comment', {'fg': s:orange})
+call s:H('Comment', {'fg': s:orange, 'attrs': 'italic'})
 call s:H('Constant', {'fg': s:burnt_orange})
 call s:H('String', {'fg': s:lavender})
 call s:H('Character', {'fg': s:lavender})
