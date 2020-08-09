@@ -15,48 +15,48 @@
 " PERFORMANCE OF THIS SOFTWARE.
 
 " We define 16 main colors that map reasonably well onto the standard 16-color
-" terminal palette. Indeed, these RGB colors can be assigned as the terminal
+" ANSI terminal palette. Indeed, these RGB colors can be used as the terminal
 " color scheme to quite a nice effect. Two colors are nonstandard (burnt orange
 " as "bright red" and mint green as "cyan"), but these selections still leave
 " ample contrast in the usual console applications.
 
 " Terminal black (0), bright black (8):
-let s:brown = {'rgb': '#1f1912', 'color256': '', 'color16': '0'}
-let s:light_brown = {'rgb': '#816749', 'color256': '', 'color16': '8'}
+let s:brown = {'rgb': '#1f1912', 'term256': '0', 'term16': '0'}
+let s:light_brown = {'rgb': '#816749', 'term256': '8', 'term16': '8'}
 
 " Terminal red (1), bright red (9):
-let s:red = {'rgb': '#d80450', 'color256': '', 'color16': '1'}
-let s:burnt_orange = {'rgb': '#f63f05', 'color256': '', 'color16': '9'}
+let s:red = {'rgb': '#d80450', 'term256': '1', 'term16': '1'}
+let s:burnt_orange = {'rgb': '#f63f05', 'term256': '9', 'term16': '9'}
 
 " Terminal green (2), bright green (10):
-let s:forest_green = {'rgb': '#24a507', 'color256': '', 'color16': '2'}
-let s:green = {'rgb': '#a0ea00', 'color256': '', 'color16': '10'}
+let s:forest_green = {'rgb': '#24a507', 'term256': '2', 'term16': '2'}
+let s:green = {'rgb': '#a0ea00', 'term256': '10', 'term16': '10'}
 
 " Terminal yellow (3), bright yellow (11):
-let s:orange = {'rgb': '#fbb32f', 'color256': '', 'color16': '3'}
-let s:yellow = {'rgb': '#fbec5d', 'color256': '', 'color16': '11'}
+let s:orange = {'rgb': '#fbb32f', 'term256': '3', 'term16': '3'}
+let s:yellow = {'rgb': '#fbec5d', 'term256': '11', 'term16': '11'}
 
 " Terminal blue (4), bright blue (12):
-let s:blue = {'rgb': '#3f91f1', 'color256': '', 'color16': '4'}
-let s:pastel_blue = {'rgb': '#8ccdf0', 'color256': '', 'color16': '12'}
+let s:blue = {'rgb': '#3f91f1', 'term256': '4', 'term16': '4'}
+let s:pastel_blue = {'rgb': '#8ccdf0', 'term256': '12', 'term16': '12'}
 
 " Terminal magenta (5), bright magenta (13):
-let s:pink = {'rgb': '#ec6c99', 'color256': '', 'color16': '5'}
-let s:lavender = {'rgb': '#e6a2f3', 'color256': '', 'color16': '13'}
+let s:pink = {'rgb': '#ec6c99', 'term256': '5', 'term16': '5'}
+let s:lavender = {'rgb': '#e6a2f3', 'term256': '13', 'term16': '13'}
 
 " Terminal cyan (6), bright cyan (14):
-let s:mint_green = {'rgb': '#d8ff84', 'color256': '', 'color16': '6'}
-let s:teal = {'rgb': '#59eea5', 'color256': '', 'color16': '14'}
+let s:mint_green = {'rgb': '#d8ff84', 'term256': '6', 'term16': '6'}
+let s:teal = {'rgb': '#59eea5', 'term256': '14', 'term16': '14'}
 
 " Terminal white (7), bright white (15):
-let s:pastel_green = {'rgb': '#c0f396', 'color256': '', 'color16': '7'}
-let s:tan = {'rgb': '#fef3b4', 'color256': '', 'color16': '15'}
+let s:pastel_green = {'rgb': '#c0f396', 'term256': '7', 'term16': '7'}
+let s:tan = {'rgb': '#fef3b4', 'term256': '15', 'term16': '15'}
 
 " We also define one additional color: black. In a 16-color terminal, this will
 " be mapped to the same color as brown, but in practice this only matters for
-" CursorLine and CursorColumn, and they're still identifiable via bold.
+" CursorLine and CursorColumn, and they're identifiable via bold in any case.
 
-let s:black = {'rgb': '#000000', 'color256': '', 'color16': '0'}
+let s:black = {'rgb': '#000000', 'term256': '16', 'term16': '0'}
 
 " This color scheme refrains from using some features that cause rendering bugs
 " in some terminals. These features can be enabled in case the user knows their
@@ -86,6 +86,20 @@ endif
 if !exists('g:abbott_term_set_undercurl_color')
   let g:abbott_term_set_undercurl_color = 0
 endif
+
+" Returns the appropriate color index for the current terminal. We currently
+" only have special support for the 256-color xterm palette. All other terminals
+" get the standard 16-color ANSI palette.
+"
+" We could add support for the 88-color xterm palette or legacy
+" xterm-incompatible 256-color palettes, but it doesn't seem worth the effort.
+"
+" Direct color (a.k.a. true color or 24-bit color) is handled differently: if
+" the termguicolors option is set, Vim uses guifg/guibg/guisp, and
+" ctermfg/ctermbg are ignored.
+function! s:TermColor(color)
+  return &t_Co == 256 ? a:color.term256 : a:color.term16
+endfunction
 
 " Returns whether Vim supports the ctermul highlight parameter.
 function! s:CanSetUndercurlColor()
@@ -131,10 +145,10 @@ function! s:H(group, style)
   " otherwise defaults can conflict with things we explicitly set (such as the
   " default background on SpellBad vs. our custom foreground for that group).
   execute 'highlight' a:group 'term=NONE'
-      \ 'ctermfg=' (exists('l:term_fg') ? l:term_fg.color16 : 'NONE')
-      \ 'ctermbg=' . (has_key(a:style, 'bg') ? a:style.bg.color16 : 'NONE')
+      \ 'ctermfg=' (exists('l:term_fg') ? s:TermColor(l:term_fg) : 'NONE')
+      \ 'ctermbg=' . (has_key(a:style, 'bg') ? s:TermColor(a:style.bg) : 'NONE')
       \ (s:CanSetUndercurlColor() ?
-          \ 'ctermul=' . (exists(l:term_sp) ? l:term_sp.color16 : 'NONE')
+          \ 'ctermul=' . (exists(l:term_sp) ? s:TermColor(l:term_sp) : 'NONE')
           \ : '')
       \ 'cterm=' . (!empty(l:term_attrs) ? join(l:term_attrs, ',') : 'NONE')
       \ 'guifg=' . (has_key(a:style, 'fg') ? a:style.fg.rgb : 'NONE')
@@ -259,3 +273,27 @@ highlight link gitcommitOverflow Error
 
 " Set up custom highlights for tex.vim.
 highlight link texStatement PreProc
+
+" If requested by the user, use our standard 16-color palette for the embedded
+" terminal. We don't do this by default because unlike the highlight groups
+" above, this isn't automatically cleared when another color scheme is selected.
+if exists('g:abbott_set_term_ansi_colors') && g:abbott_set_term_ansi_colors
+  let g:terminal_ansi_colors = [
+      \ s:brown.rgb,
+      \ s:red.rgb,
+      \ s:forest_green.rgb,
+      \ s:orange.rgb,
+      \ s:blue.rgb,
+      \ s:pink.rgb,
+      \ s:mint_green.rgb,
+      \ s:pastel_green.rgb,
+      \ s:light_brown.rgb,
+      \ s:burnt_orange.rgb,
+      \ s:green.rgb,
+      \ s:yellow.rgb,
+      \ s:pastel_blue.rgb,
+      \ s:lavender.rgb,
+      \ s:teal.rgb,
+      \ s:tan.rgb,
+      \ ]
+endif
