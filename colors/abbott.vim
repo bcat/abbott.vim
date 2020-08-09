@@ -44,6 +44,7 @@ let s:blue = {'rgb': '#3f91f1', 'color256': '', 'color16': '4'}
 " Color constants, violet:
 let s:lavender = {'rgb': '#e6a2f3', 'color256': '', 'color16': '13'}
 
+" Returns whether Vim supports the ctermul highlight parameter.
 function! s:CanSetUndercurlColor()
   return has('patch-8.2.863')
 endfunction
@@ -54,6 +55,8 @@ endfunction
 " respectively. Additionally, the 'attrs' key, if present, should map to a list
 " of terminal attributes.
 function! s:H(group, style)
+  " Evaluate terminal/GUI attributes for the highlight, possibly filtering or
+  " replacing attributes the user may not wish to use in their terminal.
   let l:attrs = has_key(a:style, 'attrs') ? a:style.attrs : []
   let l:term_attrs = copy(l:attrs)
 
@@ -65,6 +68,10 @@ function! s:H(group, style)
     call map(l:term_attrs, 'v:val ==# "undercurl" ? "underline" : v:val')
   endif
 
+  " Set up terminal foreground and undercurl colors. If the current version of
+  " Vim can't set undercurl color in the terminal or if the user does not wish
+  " us to use that option (e.g., because their terminal doesn't support it),
+  " then we *replace* the foreground color with the undercurl ("special") color.
   if has_key(a:style, 'sp')
     if s:CanSetUndercurlColor() && g:abbott_term_undercurl_separate_color
       let l:term_sp = a:style.sp
@@ -77,6 +84,9 @@ function! s:H(group, style)
     let l:term_fg = a:style.fg
   endif
 
+  " Set the highlight. We explicitly set missing parameters to 'NONE' because
+  " otherwise defaults can conflict with things we explicitly set (such as the
+  " default background on SpellBad vs. our custom foreground for that group).
   execute 'highlight' a:group 'term=NONE'
       \ 'ctermfg=' (exists('l:term_fg') ? l:term_fg.color16 : 'NONE')
       \ 'ctermbg=' . (has_key(a:style, 'bg') ? a:style.bg.color16 : 'NONE')
