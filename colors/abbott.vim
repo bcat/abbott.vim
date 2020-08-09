@@ -14,38 +14,78 @@
 " OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 " PERFORMANCE OF THIS SOFTWARE.
 
-" Color constants, grayscale:
-let s:black = {'rgb': '#000000', 'color256': '', 'color16': '0'}
+" We define 16 main colors that map reasonably well onto the standard 16-color
+" terminal palette. Indeed, these RGB colors can be assigned as the terminal
+" color scheme to quite a nice effect. Two colors are nonstandard (burnt orange
+" as "bright red" and mint green as "cyan"), but these selections still leave
+" ample contrast in the usual console applications.
 
-" Color constants, brown:
-let s:tan = {'rgb': '#fef3b4', 'color256': '', 'color16': '15'}
-let s:light_brown = {'rgb': '#816749', 'color256': '', 'color16': '8'}
+" Terminal black (0), bright black (8):
 let s:brown = {'rgb': '#1f1912', 'color256': '', 'color16': '0'}
+let s:light_brown = {'rgb': '#816749', 'color256': '', 'color16': '8'}
 
-" Color constants, red:
-let s:pink = {'rgb': '#ec6c99', 'color256': '', 'color16': '5'}
+" Terminal red (1), bright red (9):
 let s:red = {'rgb': '#d80450', 'color256': '', 'color16': '1'}
+let s:burnt_orange = {'rgb': '#f63f05', 'color256': '', 'color16': '9'}
 
-" Color constants, yellow:
+" Terminal green (2), bright green (10):
+let s:forest_green = {'rgb': '#24a507', 'color256': '', 'color16': '2'}
+let s:green = {'rgb': '#a0ea00', 'color256': '', 'color16': '10'}
+
+" Terminal yellow (3), bright yellow (11):
+let s:orange = {'rgb': '#fbb32f', 'color256': '', 'color16': '3'}
 let s:yellow = {'rgb': '#fbec5d', 'color256': '', 'color16': '11'}
 
-" Color constants, orange:
-let s:burnt_orange = {'rgb': '#f63f05', 'color256': '', 'color16': '9'}
-let s:orange = {'rgb': '#fbb32f', 'color256': '', 'color16': '3'}
-
-" Color constants, green:
-let s:mint_green = {'rgb': '#d8ff84', 'color256': '', 'color16': '6'}
-let s:pastel_green = {'rgb': '#c0f396', 'color256': '', 'color16': '7'}
-let s:green = {'rgb': '#a0ea00', 'color256': '', 'color16': '10'}
-let s:forest_green = {'rgb': '#24a507', 'color256': '', 'color16': '2'}
-
-" Color constants, blue:
-let s:teal = {'rgb': '#59eea5', 'color256': '', 'color16': '14'}
-let s:pastel_blue = {'rgb': '#8ccdf0', 'color256': '', 'color16': '12'}
+" Terminal blue (4), bright blue (12):
 let s:blue = {'rgb': '#3f91f1', 'color256': '', 'color16': '4'}
+let s:pastel_blue = {'rgb': '#8ccdf0', 'color256': '', 'color16': '12'}
 
-" Color constants, violet:
+" Terminal magenta (5), bright magenta (13):
+let s:pink = {'rgb': '#ec6c99', 'color256': '', 'color16': '5'}
 let s:lavender = {'rgb': '#e6a2f3', 'color256': '', 'color16': '13'}
+
+" Terminal cyan (6), bright cyan (14):
+let s:mint_green = {'rgb': '#d8ff84', 'color256': '', 'color16': '6'}
+let s:teal = {'rgb': '#59eea5', 'color256': '', 'color16': '14'}
+
+" Terminal white (7), bright white (15):
+let s:pastel_green = {'rgb': '#c0f396', 'color256': '', 'color16': '7'}
+let s:tan = {'rgb': '#fef3b4', 'color256': '', 'color16': '15'}
+
+" We also define one additional color: black. In a 16-color terminal, this will
+" be mapped to the same color as brown, but in practice this only matters for
+" CursorLine and CursorColumn, and they're still identifiable via bold.
+
+let s:black = {'rgb': '#000000', 'color256': '', 'color16': '0'}
+
+" This color scheme refrains from using some features that cause rendering bugs
+" in some terminals. These features can be enabled in case the user knows their
+" terminal is well behaved.
+
+" The g:abbott_term_use_italic option enables the use of italics in the
+" terminal. This is disabled by default since the default terminfo for GNU
+" Screen renders italics as reverse video, and since other terminals like hterm
+" may show artifacts when rendering italics.
+if !exists('g:abbott_term_use_italics')
+  let g:abbott_term_use_italics = 0
+endif
+
+" The g:abbott_term_use_undercurl option enables the use of undercurl in the
+" terminal. By default, underlined text will be used instead, because some
+" terminfo entries cause Vim to think the terminal supports undercurl when it
+" really does not (https://github.com/vim/vim/issues/3471).
+if !exists('g:abbott_term_use_undercurl')
+  let g:abbott_term_use_undercurl = 0
+endif
+
+" The g:abbott_term_set_undercurl_color option attempts to set the undercurl
+" color separately from the text color. This prevents spell checking from
+" interfering with normal syntax highlighting. By default, the foreground text
+" color will be replaced by the undercurl color in the terminal since otherwise
+" that color will not be visible at all.
+if !exists('g:abbott_term_set_undercurl_color')
+  let g:abbott_term_set_undercurl_color = 0
+endif
 
 " Returns whether Vim supports the ctermul highlight parameter.
 function! s:CanSetUndercurlColor()
@@ -63,11 +103,11 @@ function! s:H(group, style)
   let l:attrs = has_key(a:style, 'attrs') ? a:style.attrs : []
   let l:term_attrs = copy(l:attrs)
 
-  if g:abbott_term_no_italic
+  if !g:abbott_term_use_italics
     call filter(l:term_attrs, 'v:val !=# "italic"')
   endif
 
-  if g:abbott_term_undercurl_as_underline
+  if !g:abbott_term_use_undercurl
     call map(l:term_attrs, 'v:val ==# "undercurl" ? "underline" : v:val')
   endif
 
@@ -76,7 +116,7 @@ function! s:H(group, style)
   " us to use that option (e.g., because their terminal doesn't support it),
   " then we *replace* the foreground color with the undercurl ("special") color.
   if has_key(a:style, 'sp')
-    if s:CanSetUndercurlColor() && g:abbott_term_undercurl_separate_color
+    if s:CanSetUndercurlColor() && g:abbott_term_set_undercurl_color
       let l:term_sp = a:style.sp
     else
       let l:term_fg = a:style.sp
@@ -102,17 +142,6 @@ function! s:H(group, style)
       \ 'guisp=' . (has_key(a:style, 'sp') ? a:style.sp.rgb : 'NONE')
       \ 'gui=' . (!empty(l:attrs) ? join(l:attrs, ',') : 'NONE')
 endfunction
-
-" Set default values for preferences not explicitly set by the user.
-if !exists('g:abbott_term_no_italic')
-  let g:abbott_term_no_italic = 0
-endif
-if !exists('g:abbott_term_undercurl_as_underline')
-  let g:abbott_term_undercurl_as_underline = 0
-endif
-if !exists('g:abbott_term_undercurl_separate_color')
-  let g:abbott_term_undercurl_separate_color = 0
-endif
 
 " Mark abbott.vim as a dark theme.
 set background=dark
@@ -158,19 +187,19 @@ call s:H('PmenuSbar', {'bg': s:brown})
 call s:H('PmenuThumb', {'bg': s:blue})
 call s:H('Question', {'fg': s:pink, 'attrs': ['bold']})
 call s:H('QuickFixLine', {'fg': s:brown, 'bg': s:tan, 'attrs': ['bold']})
-call s:H('SignColumn', {'fg': s:brown, 'bg': s:pastel_green})
+call s:H('SignColumn', {'fg': s:brown, 'bg': s:mint_green})
 call s:H('StatusLine', {'fg': s:brown, 'bg': s:pastel_blue, 'attrs': ['bold']})
-call s:H('StatusLineNC', {'fg': s:brown, 'bg': s:pastel_green})
+call s:H('StatusLineNC', {'fg': s:brown, 'bg': s:mint_green})
 call s:H('StatusLineTerm',
     \ {'fg': s:brown, 'bg': s:pastel_blue, 'attrs': ['bold']})
-call s:H('StatusLineTermNC', {'fg': s:brown, 'bg': s:pastel_green})
-call s:H('TabLine', {'fg': s:brown, 'bg': s:pastel_green})
-call s:H('TabLineFill', {'bg': s:pastel_green})
+call s:H('StatusLineTermNC', {'fg': s:brown, 'bg': s:mint_green})
+call s:H('TabLine', {'fg': s:brown, 'bg': s:mint_green})
+call s:H('TabLineFill', {'bg': s:mint_green})
 call s:H('TabLineSel', {'fg': s:brown, 'bg': s:pastel_blue, 'attrs': ['bold']})
 call s:H('Title', {'fg': s:red, 'attrs': ['bold']})
 call s:H('WarningMsg', {'fg': s:brown, 'bg': s:pink})
-call s:H('WildMenu', {'fg': s:brown, 'bg': s:pastel_green})
-call s:H('VertSplit', {'fg': s:brown, 'bg': s:pastel_green})
+call s:H('WildMenu', {'fg': s:brown, 'bg': s:mint_green, 'attrs': ['bold']})
+call s:H('VertSplit', {'fg': s:brown, 'bg': s:mint_green})
 
 " Use plain old reverse video for the blinking cursor.
 " Use an eye-catching shade of green for the blinking cursor.
@@ -178,9 +207,9 @@ call s:H('Cursor', {'fg': s:brown, 'bg': s:green})
 call s:H('CursorIM', {'fg': s:brown, 'bg': s:green})
 
 " Darken the background of the current line and column.
-call s:H('CursorLine', {'bg': s:black})
+call s:H('CursorLine', {'bg': s:black, 'attrs': ['bold']})
 call s:H('CursorLineNr', {'bg': s:black, 'attrs': ['bold']})
-call s:H('CursorColumn', {'bg': s:black})
+call s:H('CursorColumn', {'bg': s:black, 'attrs': ['bold']})
 
 " Darken the background of the right margin.
 call s:H('ColorColumn', {'fg': s:brown, 'bg': s:tan})
