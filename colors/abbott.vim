@@ -14,6 +14,9 @@
 " OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 " PERFORMANCE OF THIS SOFTWARE.
 
+" Color constants, grayscale:
+let s:black = {'rgb': '#000000', 'color256': '', 'color16': '0'}
+
 " Color constants, brown:
 let s:tan = {'rgb': '#fef3b4', 'color256': '', 'color16': '15'}
 let s:light_brown = {'rgb': '#816749', 'color256': '', 'color16': '8'}
@@ -144,8 +147,8 @@ call s:H('Todo', {'fg': s:brown, 'bg': s:orange})
 
 " Set up highlights for various UI elements.
 call s:H('ErrorMsg', {'fg': s:brown, 'bg': s:red})
-call s:H('FoldColumn', {'fg': s:brown, 'bg': s:pastel_blue})
-call s:H('FoldColumn', {'fg': s:brown, 'bg': s:pastel_blue})
+call s:H('FoldColumn', {'fg': s:burnt_orange})
+call s:H('Folded', {'fg': s:burnt_orange})
 call s:H('LineNr', {'fg': s:yellow})
 call s:H('ModeMsg', {'attrs': ['bold']})
 call s:H('MoreMsg', {'fg': s:blue, 'attrs': ['bold']})
@@ -154,9 +157,13 @@ call s:H('PmenuSel', {'fg': s:brown, 'bg': s:tan, 'attrs': ['bold']})
 call s:H('PmenuSbar', {'bg': s:brown})
 call s:H('PmenuThumb', {'bg': s:blue})
 call s:H('Question', {'fg': s:pink, 'attrs': ['bold']})
+call s:H('QuickFixLine', {'fg': s:brown, 'bg': s:tan, 'attrs': ['bold']})
 call s:H('SignColumn', {'fg': s:brown, 'bg': s:pastel_green})
 call s:H('StatusLine', {'fg': s:brown, 'bg': s:pastel_blue, 'attrs': ['bold']})
 call s:H('StatusLineNC', {'fg': s:brown, 'bg': s:pastel_green})
+call s:H('StatusLineTerm',
+    \ {'fg': s:brown, 'bg': s:pastel_blue, 'attrs': ['bold']})
+call s:H('StatusLineTermNC', {'fg': s:brown, 'bg': s:pastel_green})
 call s:H('TabLine', {'fg': s:brown, 'bg': s:pastel_green})
 call s:H('TabLineFill', {'bg': s:pastel_green})
 call s:H('TabLineSel', {'fg': s:brown, 'bg': s:pastel_blue, 'attrs': ['bold']})
@@ -171,8 +178,9 @@ call s:H('Cursor', {'fg': s:brown, 'bg': s:green})
 call s:H('CursorIM', {'fg': s:brown, 'bg': s:green})
 
 " Darken the background of the current line and column.
-call s:H('CursorLine', {'bg': s:brown})
-call s:H('CursorColumn', {'bg': s:brown})
+call s:H('CursorLine', {'bg': s:black})
+call s:H('CursorLineNr', {'bg': s:black, 'attrs': ['bold']})
+call s:H('CursorColumn', {'bg': s:black})
 
 " Darken the background of the right margin.
 call s:H('ColorColumn', {'fg': s:brown, 'bg': s:tan})
