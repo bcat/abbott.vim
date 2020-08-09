@@ -182,7 +182,6 @@ call s:H('ColorColumn', {'fg': s:brown, 'bg': s:tan})
 call s:H('MatchParen', {'fg': s:brown, 'bg': s:light_brown, 'attrs': ['bold']})
 
 " Set up highlights for imaginary '~' and '@' characters, and for special keys.
-" The EndOfBuffer group was added by Neovim; Vim uses the NonText group instead.
 call s:H('EndOfBuffer', {'fg': s:light_brown})
 call s:H('NonText', {'fg': s:teal})
 call s:H('SpecialKey', {'fg': s:teal})
