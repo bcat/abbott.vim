@@ -253,5 +253,9 @@ call s:H('DiffText', {'fg': s:brown, 'bg': s:teal, 'attrs': ['bold']})
 " Set up custom highlights for bad-whitespace.vim.
 call s:H('BadWhitespace', {'fg': s:brown, 'bg': s:red})
 
-" Render TeX macros in preprocessor style. They are macros, after all. :P
+" Set up custom highlights for gitcommit.vim.
+call s:H('gitcommitSummary', {'attrs': ['bold']})
+highlight link gitcommitOverflow Error
+
+" Set up custom highlights for tex.vim.
 highlight link texStatement PreProc
