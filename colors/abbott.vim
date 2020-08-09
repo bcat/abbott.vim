@@ -44,6 +44,10 @@ let s:blue = {'rgb': '#3f91f1', 'color256': '', 'color16': '4'}
 " Color constants, violet:
 let s:lavender = {'rgb': '#e6a2f3', 'color256': '', 'color16': '13'}
 
+function! s:CanSetUndercurlColor()
+  return has('patch-8.2.863')
+endfunction
+
 " Highlights {group} according to the configuration given in {style}. The style
 " dictionary may have color constant values with keys 'fg', 'bg', and 'sp' to
 " set the highlight group's foreground, background, and undercurl colors,
@@ -53,17 +57,32 @@ function! s:H(group, style)
   let l:attrs = has_key(a:style, 'attrs') ? a:style.attrs : []
   let l:term_attrs = copy(l:attrs)
 
-  if g:abbott_term_undercurl_as_underline
-    call map(l:term_attrs, 'v:val ==# "undercurl" ? "underline" : v:val')
-  endif
   if g:abbott_term_no_italic
     call filter(l:term_attrs, 'v:val !=# "italic"')
   endif
 
+  if g:abbott_term_undercurl_as_underline
+    call map(l:term_attrs, 'v:val ==# "undercurl" ? "underline" : v:val')
+  endif
+
+  if has_key(a:style, 'sp')
+    if s:CanSetUndercurlColor() && g:abbott_term_undercurl_separate_color
+      let l:term_sp = a:style.sp
+    else
+      let l:term_fg = a:style.sp
+    endif
+  endif
+
+  if has_key(a:style, 'fg') && !exists('l:term_fg')
+    let l:term_fg = a:style.fg
+  endif
+
   execute 'highlight' a:group 'term=NONE'
-      \ 'ctermfg=' . (has_key(a:style, 'sp') ? a:style.sp.color16
-          \ : has_key(a:style, 'fg') ? a:style.fg.color16 : 'NONE')
+      \ 'ctermfg=' (exists('l:term_fg') ? l:term_fg.color16 : 'NONE')
       \ 'ctermbg=' . (has_key(a:style, 'bg') ? a:style.bg.color16 : 'NONE')
+      \ (s:CanSetUndercurlColor() ?
+          \ 'ctermul=' . (exists(l:term_sp) ? l:term_sp.color16 : 'NONE')
+          \ : '')
       \ 'cterm=' . (!empty(l:term_attrs) ? join(l:term_attrs, ',') : 'NONE')
       \ 'guifg=' . (has_key(a:style, 'fg') ? a:style.fg.rgb : 'NONE')
       \ 'guibg=' . (has_key(a:style, 'bg') ? a:style.bg.rgb : 'NONE')
@@ -72,12 +91,14 @@ function! s:H(group, style)
 endfunction
 
 " Set default values for preferences not explicitly set by the user.
+if !exists('g:abbott_term_no_italic')
+  let g:abbott_term_no_italic = 0
+endif
 if !exists('g:abbott_term_undercurl_as_underline')
   let g:abbott_term_undercurl_as_underline = 0
 endif
-
-if !exists('g:abbott_term_no_italic')
-  let g:abbott_term_no_italic = 0
+if !exists('g:abbott_term_undercurl_separate_color')
+  let g:abbott_term_undercurl_separate_color = 0
 endif
 
 " Mark abbott.vim as a dark theme.
