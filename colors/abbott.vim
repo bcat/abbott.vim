@@ -58,9 +58,16 @@ let s:tan = {'rgb': '#fef3b4', 'term256': '229', 'term16': '15'}
 
 let s:black = {'rgb': '#000000', 'term256': '16', 'term16': '0'}
 
-" This color scheme refrains from using some features that cause rendering bugs
-" in some terminals. These features can be enabled in case the user knows their
-" terminal is well behaved.
+" This color scheme offers some additional features that are disabled by default
+" because they may not interact well with all terminals or with other Vim color
+" schemes. These features can be enabled if the user likes to live dangerously.
+
+" If requested by the user, use our standard 16-color palette for the embedded
+" terminal. We don't do this by default because unlike the highlight groups
+" above, this isn't automatically cleared when another color scheme is selected.
+if !exists('g:abbott_set_term_ansi_colors')
+  let g:abbott_set_term_ansi_colors = 0
+endif
 
 " The g:abbott_term_use_italic option enables the use of italics in the
 " terminal. This is disabled by default since the default terminfo for GNU
@@ -98,11 +105,11 @@ endif
 " the termguicolors option is set, Vim uses guifg/guibg/guisp, and
 " ctermfg/ctermbg are ignored.
 function! s:TermColor(color)
-  return &t_Co == 256 ? a:color.term256 : a:color.term16
+  return &t_Co >= 256 ? a:color.term256 : a:color.term16
 endfunction
 
 " Returns whether Vim supports the ctermul highlight parameter.
-function! s:CanSetUndercurlColor()
+function! s:HasTermUnderColor()
   return has('patch-8.2.863')
 endfunction
 
@@ -130,7 +137,7 @@ function! s:H(group, style)
   " us to use that option (e.g., because their terminal doesn't support it),
   " then we *replace* the foreground color with the undercurl ("special") color.
   if has_key(a:style, 'sp')
-    if s:CanSetUndercurlColor() && g:abbott_term_set_undercurl_color
+    if s:HasTermUnderColor() && g:abbott_term_set_undercurl_color
       let l:term_sp = a:style.sp
     else
       let l:term_fg = a:style.sp
@@ -147,7 +154,7 @@ function! s:H(group, style)
   execute 'highlight' a:group 'term=NONE'
       \ 'ctermfg=' (exists('l:term_fg') ? s:TermColor(l:term_fg) : 'NONE')
       \ 'ctermbg=' . (has_key(a:style, 'bg') ? s:TermColor(a:style.bg) : 'NONE')
-      \ (s:CanSetUndercurlColor() ?
+      \ (s:HasTermUnderColor() ?
           \ 'ctermul=' . (exists(l:term_sp) ? s:TermColor(l:term_sp) : 'NONE')
           \ : '')
       \ 'cterm=' . (!empty(l:term_attrs) ? join(l:term_attrs, ',') : 'NONE')
@@ -274,10 +281,8 @@ highlight link gitcommitOverflow Error
 " Set up custom highlights for tex.vim.
 highlight link texStatement PreProc
 
-" If requested by the user, use our standard 16-color palette for the embedded
-" terminal. We don't do this by default because unlike the highlight groups
-" above, this isn't automatically cleared when another color scheme is selected.
-if exists('g:abbott_set_term_ansi_colors') && g:abbott_set_term_ansi_colors
+" Set up the embedded terminal.
+if g:abbott_set_term_ansi_colors
   let g:terminal_ansi_colors = [
       \ s:brown.rgb,
       \ s:red.rgb,
