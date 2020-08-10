@@ -1,4 +1,5 @@
 " abbott.vim <https://github.com/bcat/abbott.vim>
+" A warm, dark color scheme for prose and code, with pastels and a hint of mint.
 "
 " Copyright 2011-2013, 2015, 2017, 2020 Jonathan Rascher
 "
