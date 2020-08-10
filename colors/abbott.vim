@@ -21,36 +21,36 @@
 " ample contrast in the usual console applications.
 
 " Terminal black (0), bright black (8):
-let s:brown = {'rgb': '#1f1912', 'term256': '0', 'term16': '0'}
-let s:light_brown = {'rgb': '#816749', 'term256': '8', 'term16': '8'}
+let s:brown = {'rgb': '#1f1912', 'term256': '234', 'term16': '0'}
+let s:light_brown = {'rgb': '#816749', 'term256': '94', 'term16': '8'}
 
 " Terminal red (1), bright red (9):
-let s:red = {'rgb': '#d80450', 'term256': '1', 'term16': '1'}
-let s:burnt_orange = {'rgb': '#f63f05', 'term256': '9', 'term16': '9'}
+let s:red = {'rgb': '#d80450', 'term256': '161', 'term16': '1'}
+let s:burnt_orange = {'rgb': '#f63f05', 'term256': '196', 'term16': '9'}
 
 " Terminal green (2), bright green (10):
-let s:forest_green = {'rgb': '#24a507', 'term256': '2', 'term16': '2'}
-let s:green = {'rgb': '#a0ea00', 'term256': '10', 'term16': '10'}
+let s:forest_green = {'rgb': '#24a507', 'term256': '34', 'term16': '2'}
+let s:green = {'rgb': '#a0ea00', 'term256': '154', 'term16': '10'}
 
 " Terminal yellow (3), bright yellow (11):
-let s:orange = {'rgb': '#fbb32f', 'term256': '3', 'term16': '3'}
-let s:yellow = {'rgb': '#fbec5d', 'term256': '11', 'term16': '11'}
+let s:orange = {'rgb': '#fbb32f', 'term256': '214', 'term16': '3'}
+let s:yellow = {'rgb': '#fbec5d', 'term256': '227', 'term16': '11'}
 
 " Terminal blue (4), bright blue (12):
-let s:blue = {'rgb': '#3f91f1', 'term256': '4', 'term16': '4'}
-let s:pastel_blue = {'rgb': '#8ccdf0', 'term256': '12', 'term16': '12'}
+let s:blue = {'rgb': '#3f91f1', 'term256': '33', 'term16': '4'}
+let s:pastel_blue = {'rgb': '#8ccdf0', 'term256': '117', 'term16': '12'}
 
 " Terminal magenta (5), bright magenta (13):
-let s:pink = {'rgb': '#ec6c99', 'term256': '5', 'term16': '5'}
-let s:lavender = {'rgb': '#e6a2f3', 'term256': '13', 'term16': '13'}
+let s:pink = {'rgb': '#ec6c99', 'term256': '168', 'term16': '5'}
+let s:lavender = {'rgb': '#e6a2f3', 'term256': '219', 'term16': '13'}
 
 " Terminal cyan (6), bright cyan (14):
-let s:mint_green = {'rgb': '#d8ff84', 'term256': '6', 'term16': '6'}
-let s:teal = {'rgb': '#59eea5', 'term256': '14', 'term16': '14'}
+let s:mint_green = {'rgb': '#d8ff84', 'term256': '192', 'term16': '6'}
+let s:teal = {'rgb': '#59eea5', 'term256': '85', 'term16': '14'}
 
 " Terminal white (7), bright white (15):
-let s:pastel_green = {'rgb': '#c0f396', 'term256': '7', 'term16': '7'}
-let s:tan = {'rgb': '#fef3b4', 'term256': '15', 'term16': '15'}
+let s:pastel_green = {'rgb': '#c0f396', 'term256': '193', 'term16': '7'}
+let s:tan = {'rgb': '#fef3b4', 'term256': '229', 'term16': '15'}
 
 " We also define one additional color: black. In a 16-color terminal, this will
 " be mapped to the same color as brown, but in practice this only matters for
