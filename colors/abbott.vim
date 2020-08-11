@@ -156,7 +156,7 @@ function! s:H(group, style)
       \ 'ctermfg=' (exists('l:term_fg') ? s:TermColor(l:term_fg) : 'NONE')
       \ 'ctermbg=' . (has_key(a:style, 'bg') ? s:TermColor(a:style.bg) : 'NONE')
       \ (s:HasTermUnderColor() ?
-          \ 'ctermul=' . (exists(l:term_sp) ? s:TermColor(l:term_sp) : 'NONE')
+          \ 'ctermul=' . (exists('l:term_sp') ? s:TermColor(l:term_sp) : 'NONE')
           \ : '')
       \ 'cterm=' . (!empty(l:term_attrs) ? join(l:term_attrs, ',') : 'NONE')
       \ 'guifg=' . (has_key(a:style, 'fg') ? a:style.fg.rgb : 'NONE')
