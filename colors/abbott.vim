@@ -101,7 +101,7 @@ endif
 "
 " Direct color (a.k.a. true color or 24-bit color) is handled differently: if
 " the termguicolors option is set, Vim uses guifg/guibg/guisp, and
-" ctermfg/ctermbg are ignored.
+" ctermfg/ctermbg/ctermul are ignored.
 function! s:TermColor(color)
   return &t_Co >= 256 ? a:color.term256 : a:color.term16
 endfunction
