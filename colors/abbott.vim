@@ -60,6 +60,15 @@ let s:tan = {'rgb': '#fef3b4', 'term256': '229', 'term16': '15'}
 " because they may not interact well with all terminals or with other Vim color
 " schemes. These features can be enabled if the user likes to live dangerously.
 
+" If requested by the user, restrain ourselves to only the 16 standard ANSI
+" terminal colors even if Vim thinks the terminal supports 256 colors. This
+" allows the user to configure their terminal emulator to use the 16 colors
+" defined above for its ANSI palette, allowing exact color matches rather than
+" 256-color approximations even in terminals that don't support true color.
+if !exists('g:abbott_16color')
+  let g:abbott_16color = 0
+endif
+
 " If requested by the user, use our standard 16-color palette for the embedded
 " terminal. We don't do this by default because unlike the highlight groups
 " above, this isn't automatically cleared when another color scheme is selected.
@@ -103,7 +112,7 @@ endif
 " the termguicolors option is set, Vim uses guifg/guibg/guisp, and
 " ctermfg/ctermbg/ctermul are ignored.
 function! s:TermColor(color)
-  return &t_Co >= 256 ? a:color.term256 : a:color.term16
+  return &t_Co >= 256 && !g:abbott_16color ? a:color.term256 : a:color.term16
 endfunction
 
 " Returns whether Vim supports the ctermul highlight parameter.
