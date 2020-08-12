@@ -15,11 +15,14 @@
 " OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 " PERFORMANCE OF THIS SOFTWARE.
 
-" We define 16 main colors that map reasonably well onto the standard 16-color
-" ANSI terminal palette. Indeed, these RGB colors can be used as the terminal
-" color scheme to quite a nice effect. Two colors are nonstandard (burnt orange
-" as "bright red" and mint green as "cyan"), but these selections still leave
-" ample contrast in the usual console applications.
+" Define 16 colors that map reasonably well onto the standard ANSI color
+" palette. Indeed, the terminal emulator can be configured to use these colors
+" instead of its standard palette without issues. Two colors are nonstandard
+" (burnt orange as "bright red" and mint green as "cyan"), but these selections
+" still leave ample contrast in the usual console applications.
+"
+" Approximations for 256-color terminals were computed using this script:
+" https://github.com/bcat/dotfiles/blob/master/bin/termapprox.
 
 " Terminal black (0), bright black (8):
 let s:brown = {'rgb': '#1f1912', 'term256': '234', 'term16': '0'}
@@ -52,12 +55,6 @@ let s:teal = {'rgb': '#59eea5', 'term256': '85', 'term16': '14'}
 " Terminal white (7), bright white (15):
 let s:pastel_green = {'rgb': '#c0f396', 'term256': '193', 'term16': '7'}
 let s:tan = {'rgb': '#fef3b4', 'term256': '229', 'term16': '15'}
-
-" We also define one additional color: black. In a 16-color terminal, this will
-" be mapped to the same color as brown, but in practice this only matters for
-" CursorLine and CursorColumn, and they're identifiable via bold in any case.
-
-let s:black = {'rgb': '#000000', 'term256': '16', 'term16': '0'}
 
 " This color scheme offers some additional features that are disabled by default
 " because they may not interact well with all terminals or with other Vim color
@@ -228,10 +225,10 @@ call s:H('VertSplit', {'fg': s:brown, 'bg': s:mint_green})
 call s:H('Cursor', {'fg': s:brown, 'bg': s:green})
 call s:H('CursorIM', {'fg': s:brown, 'bg': s:green})
 
-" Darken the background of the current line and column.
-call s:H('CursorLine', {'bg': s:black, 'attrs': ['bold']})
-call s:H('CursorLineNr', {'bg': s:black, 'attrs': ['bold']})
-call s:H('CursorColumn', {'bg': s:black, 'attrs': ['bold']})
+" Bold the current line and column.
+call s:H('CursorLine', {'attrs': ['bold']})
+call s:H('CursorLineNr', {'attrs': ['bold']})
+call s:H('CursorColumn', {'attrs': ['bold']})
 
 " Darken the background of the right margin.
 call s:H('ColorColumn', {'fg': s:brown, 'bg': s:tan})
