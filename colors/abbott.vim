@@ -17,44 +17,46 @@
 
 " Define 16 colors that map reasonably well onto the standard ANSI color
 " palette. Indeed, the terminal emulator can be configured to use these colors
-" instead of its standard palette without issues. Two colors are nonstandard
-" (burnt orange as "bright red" and mint green as "cyan"), but these selections
-" still leave ample contrast in the usual console applications.
+" instead of its standard palette without issues.
 "
-" Approximations for 256-color terminals were computed using this script:
-" https://github.com/bcat/dotfiles/blob/master/bin/termapprox.
+" Approximations for 256-color terminals were computed using my approximation
+" script (https://github.com/bcat/dotfiles/blob/master/bin/termapprox):
+"
+" $ xrdb -query | grep ^XTerm.vt100.color | \
+"     sed 's/^XTerm\.vt100\.color\([0-9]*\):/\1/' | sort -nk1 | cut -f2 | \
+"     xargs -n1 termapprox -stn16
 
-" Terminal black (0), bright black (8):
-let s:brown = {'rgb': '#1f1912', 'term256': '234', 'term16': '0'}
-let s:light_brown = {'rgb': '#816749', 'term256': '94', 'term16': '8'}
+" ANSI black (0), bright black (8):
+let s:dark_cocoa = {'rgb': '#1f1912', 'term256': '234', 'term16': '0'}
+let s:cocoa = {'rgb': '#816749', 'term256': '94', 'term16': '8'}
 
-" Terminal red (1), bright red (9):
+" ANSI red (1), bright red (9):
 let s:red = {'rgb': '#d80450', 'term256': '161', 'term16': '1'}
-let s:burnt_orange = {'rgb': '#f63f05', 'term256': '196', 'term16': '9'}
+let s:orange = {'rgb': '#f63f05', 'term256': '196', 'term16': '9'}
 
-" Terminal green (2), bright green (10):
+" ANSI green (2), bright green (10):
 let s:forest_green = {'rgb': '#24a507', 'term256': '34', 'term16': '2'}
-let s:green = {'rgb': '#a0ea00', 'term256': '154', 'term16': '10'}
+let s:chartreuse = {'rgb': '#a0ea00', 'term256': '154', 'term16': '10'}
 
-" Terminal yellow (3), bright yellow (11):
-let s:orange = {'rgb': '#fbb32f', 'term256': '214', 'term16': '3'}
-let s:yellow = {'rgb': '#fbec5d', 'term256': '227', 'term16': '11'}
+" ANSI yellow (3), bright yellow (11):
+let s:marigold = {'rgb': '#fbb32f', 'term256': '214', 'term16': '3'}
+let s:lemon_meringue = {'rgb': '#fbec5d', 'term256': '227', 'term16': '11'}
 
-" Terminal blue (4), bright blue (12):
-let s:blue = {'rgb': '#3f91f1', 'term256': '33', 'term16': '4'}
-let s:pastel_blue = {'rgb': '#8ccdf0', 'term256': '117', 'term16': '12'}
+" ANSI blue (4), bright blue (12):
+let s:cornflower_blue = {'rgb': '#3f91f1', 'term256': '33', 'term16': '4'}
+let s:periwinkle_blue = {'rgb': '#8ccdf0', 'term256': '117', 'term16': '12'}
 
-" Terminal magenta (5), bright magenta (13):
-let s:pink = {'rgb': '#ec6c99', 'term256': '168', 'term16': '5'}
+" ANSI magenta (5), bright magenta (13):
+let s:rose = {'rgb': '#ec6c99', 'term256': '168', 'term16': '5'}
 let s:lavender = {'rgb': '#e6a2f3', 'term256': '219', 'term16': '13'}
 
-" Terminal cyan (6), bright cyan (14):
-let s:mint_green = {'rgb': '#d8ff84', 'term256': '192', 'term16': '6'}
-let s:teal = {'rgb': '#59eea5', 'term256': '85', 'term16': '14'}
+" ANSI cyan (6), bright cyan (14):
+let s:zomp = {'rgb': '#39a78d', 'term256': '36', 'term16': '6'}
+let s:seafoam_green = {'rgb': '#00ff7f', 'term256': '48', 'term16': '14'}
 
-" Terminal white (7), bright white (15):
-let s:pastel_green = {'rgb': '#c0f396', 'term256': '193', 'term16': '7'}
-let s:tan = {'rgb': '#fef3b4', 'term256': '229', 'term16': '15'}
+" ANSI white (7), bright white (15):
+let s:pastel_chartreuse = {'rgb': '#d8ff84', 'term256': '192', 'term16': '6'}
+let s:vanilla_cream = {'rgb': '#fef3b4', 'term256': '229', 'term16': '15'}
 
 " This color scheme offers some additional features that are disabled by default
 " because they may not interact well with all terminals or with other Vim color
@@ -184,55 +186,55 @@ endif
 let g:colors_name = 'abbott'
 
 " Set default foreground and background colors.
-call s:H('Normal', {'fg': s:pastel_green, 'bg': s:brown})
+call s:H('Normal', {'fg': s:pastel_chartreuse, 'bg': s:dark_cocoa})
 
 " Set up highlights for basic syntax groups.
-call s:H('Comment', {'fg': s:orange, 'attrs': ['italic']})
-call s:H('Constant', {'fg': s:burnt_orange})
+call s:H('Comment', {'fg': s:marigold, 'attrs': ['italic']})
+call s:H('Constant', {'fg': s:orange})
 call s:H('String', {'fg': s:lavender})
 call s:H('Character', {'fg': s:lavender})
-call s:H('Identifier', {'fg': s:pastel_blue})
+call s:H('Identifier', {'fg': s:periwinkle_blue})
 call s:H('Statement', {'fg': s:red, 'attrs': ['bold']})
-call s:H('PreProc', {'fg': s:pink})
+call s:H('PreProc', {'fg': s:rose})
 call s:H('Type', {'fg': s:forest_green})
-call s:H('Special', {'fg': s:tan})
+call s:H('Special', {'fg': s:vanilla_cream})
 call s:H('Tag', {'fg': s:lavender, 'attrs': ['underline']})
 call s:H('Underlined', {'fg': s:lavender, 'attrs': ['underline']})
-call s:H('Ignore', {'fg': s:light_brown})
-call s:H('Error', {'fg': s:brown, 'bg': s:red})
-call s:H('Todo', {'fg': s:brown, 'bg': s:orange})
+call s:H('Ignore', {'fg': s:cocoa})
+call s:H('Error', {'fg': s:dark_cocoa, 'bg': s:red})
+call s:H('Todo', {'fg': s:dark_cocoa, 'bg': s:marigold})
 
 " Set up highlights for various UI elements.
-call s:H('ErrorMsg', {'fg': s:brown, 'bg': s:red})
-call s:H('FoldColumn', {'fg': s:burnt_orange})
-call s:H('Folded', {'fg': s:burnt_orange})
-call s:H('LineNr', {'fg': s:yellow})
+call s:H('ErrorMsg', {'fg': s:dark_cocoa, 'bg': s:red})
+call s:H('FoldColumn', {'fg': s:orange})
+call s:H('Folded', {'fg': s:orange})
+call s:H('LineNr', {'fg': s:lemon_meringue})
 call s:H('ModeMsg', {'attrs': ['bold']})
-call s:H('MoreMsg', {'fg': s:blue, 'attrs': ['bold']})
-call s:H('Pmenu', {'fg': s:brown, 'bg': s:light_brown})
-call s:H('PmenuSel', {'fg': s:brown, 'bg': s:tan, 'attrs': ['bold']})
-call s:H('PmenuSbar', {'bg': s:brown})
-call s:H('PmenuThumb', {'bg': s:blue})
-call s:H('Question', {'fg': s:pink, 'attrs': ['bold']})
-call s:H('QuickFixLine', {'fg': s:brown, 'bg': s:tan, 'attrs': ['bold']})
-call s:H('SignColumn', {'fg': s:brown, 'bg': s:mint_green})
-call s:H('StatusLine', {'fg': s:brown, 'bg': s:pastel_blue, 'attrs': ['bold']})
-call s:H('StatusLineNC', {'fg': s:brown, 'bg': s:mint_green})
+call s:H('MoreMsg', {'fg': s:cornflower_blue, 'attrs': ['bold']})
+call s:H('Pmenu', {'fg': s:dark_cocoa, 'bg': s:cocoa})
+call s:H('PmenuSel', {'fg': s:dark_cocoa, 'bg': s:vanilla_cream, 'attrs': ['bold']})
+call s:H('PmenuSbar', {'bg': s:dark_cocoa})
+call s:H('PmenuThumb', {'bg': s:cornflower_blue})
+call s:H('Question', {'fg': s:rose, 'attrs': ['bold']})
+call s:H('QuickFixLine', {'fg': s:dark_cocoa, 'bg': s:vanilla_cream, 'attrs': ['bold']})
+call s:H('SignColumn', {'fg': s:dark_cocoa, 'bg': s:zomp})
+call s:H('StatusLine', {'fg': s:dark_cocoa, 'bg': s:periwinkle_blue, 'attrs': ['bold']})
+call s:H('StatusLineNC', {'fg': s:dark_cocoa, 'bg': s:zomp})
 call s:H('StatusLineTerm',
-    \ {'fg': s:brown, 'bg': s:pastel_blue, 'attrs': ['bold']})
-call s:H('StatusLineTermNC', {'fg': s:brown, 'bg': s:mint_green})
-call s:H('TabLine', {'fg': s:brown, 'bg': s:mint_green})
-call s:H('TabLineFill', {'bg': s:mint_green})
-call s:H('TabLineSel', {'fg': s:brown, 'bg': s:pastel_blue, 'attrs': ['bold']})
+    \ {'fg': s:dark_cocoa, 'bg': s:periwinkle_blue, 'attrs': ['bold']})
+call s:H('StatusLineTermNC', {'fg': s:dark_cocoa, 'bg': s:zomp})
+call s:H('TabLine', {'fg': s:dark_cocoa, 'bg': s:zomp})
+call s:H('TabLineFill', {'bg': s:zomp})
+call s:H('TabLineSel', {'fg': s:dark_cocoa, 'bg': s:periwinkle_blue, 'attrs': ['bold']})
 call s:H('Title', {'fg': s:red, 'attrs': ['bold']})
-call s:H('WarningMsg', {'fg': s:brown, 'bg': s:pink})
-call s:H('WildMenu', {'fg': s:brown, 'bg': s:mint_green, 'attrs': ['bold']})
-call s:H('VertSplit', {'fg': s:brown, 'bg': s:mint_green})
+call s:H('WarningMsg', {'fg': s:dark_cocoa, 'bg': s:rose})
+call s:H('WildMenu', {'fg': s:dark_cocoa, 'bg': s:zomp, 'attrs': ['bold']})
+call s:H('VertSplit', {'fg': s:dark_cocoa, 'bg': s:zomp})
 
 " Use plain old reverse video for the blinking cursor.
 " Use an eye-catching shade of green for the blinking cursor.
-call s:H('Cursor', {'fg': s:brown, 'bg': s:green})
-call s:H('CursorIM', {'fg': s:brown, 'bg': s:green})
+call s:H('Cursor', {'fg': s:dark_cocoa, 'bg': s:chartreuse})
+call s:H('CursorIM', {'fg': s:dark_cocoa, 'bg': s:chartreuse})
 
 " Bold the current line and column.
 call s:H('CursorLine', {'attrs': ['bold']})
@@ -240,46 +242,46 @@ call s:H('CursorLineNr', {'attrs': ['bold']})
 call s:H('CursorColumn', {'attrs': ['bold']})
 
 " Darken the background of the right margin.
-call s:H('ColorColumn', {'fg': s:brown, 'bg': s:tan})
+call s:H('ColorColumn', {'fg': s:dark_cocoa, 'bg': s:vanilla_cream})
 
 " Highlight matched delimiters in a way that's clearly distinguishable from
 " unmatched delimiter/statement/preprocessor highlighting.
-call s:H('MatchParen', {'fg': s:brown, 'bg': s:light_brown, 'attrs': ['bold']})
+call s:H('MatchParen', {'fg': s:dark_cocoa, 'bg': s:cocoa, 'attrs': ['bold']})
 
 " Set up highlights for imaginary '~' and '@' characters, and for special keys.
-call s:H('EndOfBuffer', {'fg': s:light_brown})
-call s:H('NonText', {'fg': s:teal})
-call s:H('SpecialKey', {'fg': s:teal})
+call s:H('EndOfBuffer', {'fg': s:cocoa})
+call s:H('NonText', {'fg': s:seafoam_green})
+call s:H('SpecialKey', {'fg': s:seafoam_green})
 
 " Set a vibrant background for visual mode.
-call s:H('Visual', {'fg': s:brown, 'bg': s:green})
-call s:H('VisualNOS', {'fg': s:brown, 'bg': s:mint_green})
+call s:H('Visual', {'fg': s:dark_cocoa, 'bg': s:chartreuse})
+call s:H('VisualNOS', {'fg': s:dark_cocoa, 'bg': s:zomp})
 
 " Use cold highlights for incremental searching and warm highlights for final
 " search results.
-call s:H('IncSearch', {'fg': s:brown, 'bg': s:teal})
-call s:H('Search', {'fg': s:brown, 'bg': s:tan})
+call s:H('IncSearch', {'fg': s:dark_cocoa, 'bg': s:seafoam_green})
+call s:H('Search', {'fg': s:dark_cocoa, 'bg': s:vanilla_cream})
 
 " Set up spell-checking in an unobtrusive way.
 call s:H('SpellBad', {'sp': s:red, 'attrs': ['undercurl']})
-call s:H('SpellCap', {'sp': s:pastel_blue, 'attrs': ['undercurl']})
-call s:H('SpellLocal', {'sp': s:yellow, 'attrs': ['undercurl']})
-call s:H('SpellRare', {'sp': s:pink, 'attrs': ['undercurl']})
+call s:H('SpellCap', {'sp': s:periwinkle_blue, 'attrs': ['undercurl']})
+call s:H('SpellLocal', {'sp': s:lemon_meringue, 'attrs': ['undercurl']})
+call s:H('SpellRare', {'sp': s:rose, 'attrs': ['undercurl']})
 
 " Don't do anything special for concealed tokens.
 call s:H('Conceal', {})
 
 " Set highlights for directory listings.
-call s:H('Directory', {'fg': s:pastel_blue})
+call s:H('Directory', {'fg': s:periwinkle_blue})
 
 " Use readable diff highlights. :)
-call s:H('DiffAdd', {'fg': s:brown, 'bg': s:green, 'attrs': ['bold']})
-call s:H('DiffChange', {'fg': s:brown, 'bg': s:pink})
-call s:H('DiffDelete', {'fg': s:brown, 'bg': s:red})
-call s:H('DiffText', {'fg': s:brown, 'bg': s:teal, 'attrs': ['bold']})
+call s:H('DiffAdd', {'fg': s:dark_cocoa, 'bg': s:chartreuse, 'attrs': ['bold']})
+call s:H('DiffChange', {'fg': s:dark_cocoa, 'bg': s:rose})
+call s:H('DiffDelete', {'fg': s:dark_cocoa, 'bg': s:red})
+call s:H('DiffText', {'fg': s:dark_cocoa, 'bg': s:seafoam_green, 'attrs': ['bold']})
 
 " Set up custom highlights for better-whitespace.vim.
-call s:H('ExtraWhitespace', {'fg': s:brown, 'bg': s:red})
+call s:H('ExtraWhitespace', {'fg': s:dark_cocoa, 'bg': s:red})
 
 " Set up custom highlights for gitcommit.vim.
 call s:H('gitcommitSummary', {'attrs': ['bold']})
@@ -291,21 +293,21 @@ highlight link texStatement PreProc
 " Set up the embedded terminal.
 if g:abbott_set_term_ansi_colors
   let g:terminal_ansi_colors = [
-      \ s:brown.rgb,
+      \ s:dark_cocoa.rgb,
       \ s:red.rgb,
       \ s:forest_green.rgb,
+      \ s:marigold.rgb,
+      \ s:cornflower_blue.rgb,
+      \ s:rose.rgb,
+      \ s:zomp.rgb,
+      \ s:pastel_chartreuse.rgb,
+      \ s:cocoa.rgb,
       \ s:orange.rgb,
-      \ s:blue.rgb,
-      \ s:pink.rgb,
-      \ s:mint_green.rgb,
-      \ s:pastel_green.rgb,
-      \ s:light_brown.rgb,
-      \ s:burnt_orange.rgb,
-      \ s:green.rgb,
-      \ s:yellow.rgb,
-      \ s:pastel_blue.rgb,
+      \ s:chartreuse.rgb,
+      \ s:lemon_meringue.rgb,
+      \ s:periwinkle_blue.rgb,
       \ s:lavender.rgb,
-      \ s:teal.rgb,
-      \ s:tan.rgb,
+      \ s:seafoam_green.rgb,
+      \ s:vanilla_cream.rgb,
       \ ]
 endif
