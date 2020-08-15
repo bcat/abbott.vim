@@ -1,5 +1,5 @@
 " abbott.vim <https://github.com/bcat/abbott.vim>
-" A warm, dark color scheme for prose and code, with pastels and a hint of mint.
+" A warm, dark color scheme for prose and code, with pastels and pretty greens.
 "
 " Copyright 2011-2013, 2015, 2017, 2020 Jonathan Rascher
 "
@@ -72,8 +72,8 @@ let s:vanilla_cream = {'rgb': '#fef3b4', 'term256': '229', 'term16': '15'}
 " allows the user to configure their terminal emulator to use the 16 colors
 " defined above for its ANSI palette, allowing exact color matches rather than
 " 256-color approximations even in terminals that don't support true color.
-if !exists('g:abbott_16color')
-  let g:abbott_16color = 0
+if !exists('g:abbott_force_16_colors')
+  let g:abbott_force_16_colors = 0
 endif
 
 " If requested by the user, use our standard 16-color palette for the embedded
@@ -119,7 +119,8 @@ endif
 " the termguicolors option is set, Vim uses guifg/guibg/guisp, and
 " ctermfg/ctermbg/ctermul are ignored.
 function! s:TermColor(color)
-  return &t_Co >= 256 && !g:abbott_16color ? a:color.term256 : a:color.term16
+  return &t_Co >= 256 && !g:abbott_force_16_colors ? a:color.term256
+      \ : a:color.term16
 endfunction
 
 " Returns whether Vim supports the ctermul highlight parameter.
@@ -217,20 +218,24 @@ call s:H('LineNr', {'fg': s:lemon_meringue})
 call s:H('ModeMsg', {'attrs': ['bold']})
 call s:H('MoreMsg', {'fg': s:cornflower_blue, 'attrs': ['bold']})
 call s:H('Pmenu', {'fg': s:dark_cocoa, 'bg': s:cocoa})
-call s:H('PmenuSel', {'fg': s:dark_cocoa, 'bg': s:vanilla_cream, 'attrs': ['bold']})
+call s:H('PmenuSel',
+    \ {'fg': s:dark_cocoa, 'bg': s:vanilla_cream, 'attrs': ['bold']})
 call s:H('PmenuSbar', {'bg': s:dark_cocoa})
 call s:H('PmenuThumb', {'bg': s:cornflower_blue})
 call s:H('Question', {'fg': s:rose, 'attrs': ['bold']})
-call s:H('QuickFixLine', {'fg': s:dark_cocoa, 'bg': s:vanilla_cream, 'attrs': ['bold']})
+call s:H('QuickFixLine',
+    \ {'fg': s:dark_cocoa, 'bg': s:vanilla_cream, 'attrs': ['bold']})
 call s:H('SignColumn', {'fg': s:dark_cocoa, 'bg': s:zomp})
-call s:H('StatusLine', {'fg': s:dark_cocoa, 'bg': s:periwinkle_blue, 'attrs': ['bold']})
+call s:H('StatusLine',
+    \ {'fg': s:dark_cocoa, 'bg': s:periwinkle_blue, 'attrs': ['bold']})
 call s:H('StatusLineNC', {'fg': s:dark_cocoa, 'bg': s:zomp})
 call s:H('StatusLineTerm',
     \ {'fg': s:dark_cocoa, 'bg': s:periwinkle_blue, 'attrs': ['bold']})
 call s:H('StatusLineTermNC', {'fg': s:dark_cocoa, 'bg': s:zomp})
 call s:H('TabLine', {'fg': s:dark_cocoa, 'bg': s:zomp})
 call s:H('TabLineFill', {'bg': s:zomp})
-call s:H('TabLineSel', {'fg': s:dark_cocoa, 'bg': s:periwinkle_blue, 'attrs': ['bold']})
+call s:H('TabLineSel',
+    \ {'fg': s:dark_cocoa, 'bg': s:periwinkle_blue, 'attrs': ['bold']})
 call s:H('Title', {'fg': s:red, 'attrs': ['bold']})
 call s:H('WarningMsg', {'fg': s:dark_cocoa, 'bg': s:rose})
 call s:H('WildMenu', {'fg': s:dark_cocoa, 'bg': s:zomp, 'attrs': ['bold']})
@@ -283,7 +288,8 @@ call s:H('Directory', {'fg': s:periwinkle_blue})
 call s:H('DiffAdd', {'fg': s:dark_cocoa, 'bg': s:chartreuse, 'attrs': ['bold']})
 call s:H('DiffChange', {'fg': s:dark_cocoa, 'bg': s:rose})
 call s:H('DiffDelete', {'fg': s:dark_cocoa, 'bg': s:red})
-call s:H('DiffText', {'fg': s:dark_cocoa, 'bg': s:seafoam_green, 'attrs': ['bold']})
+call s:H('DiffText',
+    \ {'fg': s:dark_cocoa, 'bg': s:seafoam_green, 'attrs': ['bold']})
 
 " Set up custom highlights for better-whitespace.vim.
 call s:H('ExtraWhitespace', {'fg': s:dark_cocoa, 'bg': s:red})
