@@ -19,20 +19,25 @@
 " palette. Indeed, the terminal emulator can be configured to use these colors
 " instead of its standard palette without issues.
 "
-" Approximations for 256-color terminals were computed using my approximation
-" script (https://github.com/bcat/dotfiles/blob/master/bin/termapprox):
+" Approximations for 256-color terminals were chosen with the help of a script
+" (https://github.com/bcat/dotfiles/blob/master/bin/termapprox):
 "
 " $ xrdb -query | grep ^XTerm.vt100.color | \
 "     sed 's/^XTerm\.vt100\.color\([0-9]*\):/\1/' | sort -nk1 | cut -f2 | \
 "     xargs -n1 termapprox -stn16
+"
+" Unfortunately, the XTerm 256-color palette doesn't contain many shades of
+" brown, so we approximate dark cocoa (ANSI 0) and cocoa (ANSI 8) using gray
+" instead. Additionally, we use a slightly brighter approximation for orange
+" because the closest approximation looks too reddish.
 
 " ANSI black (0), bright black (8):
-let s:dark_cocoa = {'rgb': '#1f1912', 'term256': '234', 'term16': '0'}
-let s:cocoa = {'rgb': '#816749', 'term256': '94', 'term16': '8'}
+let s:dark_cocoa = {'rgb': '#1f1912', 'term256': '233', 'term16': '0'}
+let s:cocoa = {'rgb': '#816749', 'term256': '242', 'term16': '8'}
 
 " ANSI red (1), bright red (9):
 let s:red = {'rgb': '#d80450', 'term256': '161', 'term16': '1'}
-let s:orange = {'rgb': '#f63f05', 'term256': '196', 'term16': '9'}
+let s:orange = {'rgb': '#f63f05', 'term256': '202', 'term16': '9'}
 
 " ANSI green (2), bright green (10):
 let s:forest_green = {'rgb': '#24a507', 'term256': '34', 'term16': '2'}
@@ -104,11 +109,11 @@ if !exists('g:abbott_term_set_undercurl_color')
 endif
 
 " Returns the appropriate color index for the current terminal. We currently
-" only have special support for the 256-color xterm palette. All other terminals
+" only have special support for the 256-color XTerm palette. All other terminals
 " get the standard 16-color ANSI palette.
 "
-" We could add support for the 88-color xterm palette or legacy
-" xterm-incompatible 256-color palettes, but it doesn't seem worth the effort.
+" We could add support for the 88-color XTerm palette or legacy
+" XTerm-incompatible 256-color palettes, but it doesn't seem worth the effort.
 "
 " Direct color (a.k.a. true color or 24-bit color) is handled differently: if
 " the termguicolors option is set, Vim uses guifg/guibg/guisp, and
