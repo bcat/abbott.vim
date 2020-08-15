@@ -248,7 +248,8 @@ call s:H('CursorIM', {'fg': s:dark_cocoa, 'bg': s:chartreuse})
 
 " Bold the current line and column.
 call s:H('CursorLine', {'attrs': ['bold']})
-call s:H('CursorLineNr', {'attrs': ['bold']})
+call s:H('CursorLineNr',
+    \ {'fg': s:dark_cocoa, 'bg': s:lemon_meringue, 'attrs': ['bold']})
 call s:H('CursorColumn', {'attrs': ['bold']})
 
 " Darken the background of the right margin.
