@@ -220,25 +220,26 @@ call s:H('MoreMsg', {'fg': s:cornflower_blue, 'attrs': ['bold']})
 call s:H('Pmenu', {'fg': s:dark_cocoa, 'bg': s:cocoa})
 call s:H('PmenuSel',
     \ {'fg': s:dark_cocoa, 'bg': s:vanilla_cream, 'attrs': ['bold']})
-call s:H('PmenuSbar', {'bg': s:dark_cocoa})
-call s:H('PmenuThumb', {'bg': s:cornflower_blue})
+call s:H('PmenuSbar', {'bg': s:zomp})
+call s:H('PmenuThumb', {'bg': s:vanilla_cream})
 call s:H('Question', {'fg': s:rose, 'attrs': ['bold']})
 call s:H('QuickFixLine',
     \ {'fg': s:dark_cocoa, 'bg': s:vanilla_cream, 'attrs': ['bold']})
 call s:H('SignColumn', {'fg': s:dark_cocoa, 'bg': s:zomp})
 call s:H('StatusLine',
-    \ {'fg': s:dark_cocoa, 'bg': s:periwinkle_blue, 'attrs': ['bold']})
+    \ {'fg': s:dark_cocoa, 'bg': s:cornflower_blue, 'attrs': ['bold']})
 call s:H('StatusLineNC', {'fg': s:dark_cocoa, 'bg': s:zomp})
 call s:H('StatusLineTerm',
-    \ {'fg': s:dark_cocoa, 'bg': s:periwinkle_blue, 'attrs': ['bold']})
+    \ {'fg': s:dark_cocoa, 'bg': s:cornflower_blue, 'attrs': ['bold']})
 call s:H('StatusLineTermNC', {'fg': s:dark_cocoa, 'bg': s:zomp})
 call s:H('TabLine', {'fg': s:dark_cocoa, 'bg': s:zomp})
 call s:H('TabLineFill', {'bg': s:zomp})
 call s:H('TabLineSel',
-    \ {'fg': s:dark_cocoa, 'bg': s:periwinkle_blue, 'attrs': ['bold']})
+    \ {'fg': s:dark_cocoa, 'bg': s:cornflower_blue, 'attrs': ['bold']})
 call s:H('Title', {'fg': s:red, 'attrs': ['bold']})
 call s:H('WarningMsg', {'fg': s:dark_cocoa, 'bg': s:rose})
-call s:H('WildMenu', {'fg': s:dark_cocoa, 'bg': s:zomp, 'attrs': ['bold']})
+call s:H('WildMenu',
+    \ {'fg': s:dark_cocoa, 'bg': s:vanilla_cream, 'attrs': ['bold']})
 call s:H('VertSplit', {'fg': s:dark_cocoa, 'bg': s:zomp})
 
 " Use plain old reverse video for the blinking cursor.
