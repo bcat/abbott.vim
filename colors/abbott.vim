@@ -266,7 +266,7 @@ call s:H('SpecialKey', {'fg': s:seafoam_green})
 
 " Set a vibrant background for visual mode.
 call s:H('Visual', {'fg': s:dark_cocoa, 'bg': s:chartreuse})
-call s:H('VisualNOS', {'fg': s:dark_cocoa, 'bg': s:zomp})
+call s:H('VisualNOS', {'fg': s:dark_cocoa, 'bg': s:seafoam_green})
 
 " Use cold highlights for incremental searching and warm highlights for final
 " search results.
