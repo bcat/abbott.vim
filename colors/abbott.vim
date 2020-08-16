@@ -77,6 +77,13 @@ if !exists('g:abbott_set_term_ansi_colors')
   let g:abbott_set_term_ansi_colors = 0
 endif
 
+" By default, the foreground text color will be replaced by the underline color
+" in the terminal since if the terminal does not support setting the underline
+" color separately, that color will be completely invisible.
+if !exists('g:abbott_term_set_underline_color')
+  let g:abbott_term_set_underline_color = 0
+endif
+
 " By default, Italics in the terminal are disabled since the default terminfo
 " for GNU Screen renders italics as reverse video, and since other terminals
 " like hterm may show artifacts when rendering italics.
@@ -90,13 +97,6 @@ endif
 " (https://github.com/vim/vim/issues/3471).
 if !exists('g:abbott_term_use_undercurl')
   let g:abbott_term_use_undercurl = 0
-endif
-
-" By default, the foreground text color will be replaced by the undercurl color
-" in the terminal since if the terminal does not support setting the undercurl
-" color separately, that color will be completely invisible.
-if !exists('g:abbott_term_set_undercurl_color')
-  let g:abbott_term_set_undercurl_color = 0
 endif
 
 " Returns the appropriate color index for the current terminal. We currently
@@ -115,13 +115,13 @@ function! s:TermColor(color)
 endfunction
 
 " Returns whether Vim supports the ctermul highlight parameter.
-function! s:HasTermUnderColor()
+function! s:HasTermUnderlineColor()
   return has('patch-8.2.863')
 endfunction
 
 " Highlights {group} according to the configuration given in {style}. The style
 " dictionary may have color constant values with keys 'fg', 'bg', and 'sp' to
-" set the highlight group's foreground, background, and undercurl colors,
+" set the highlight group's foreground, background, and underline colors,
 " respectively. Additionally, the 'attrs' key, if present, should map to a list
 " of terminal attributes.
 function! s:H(group, style)
@@ -138,12 +138,12 @@ function! s:H(group, style)
     call map(l:term_attrs, 'v:val ==# "undercurl" ? "underline" : v:val')
   endif
 
-  " Set up terminal foreground and undercurl colors. If the current version of
-  " Vim can't set undercurl color in the terminal or if the user does not wish
+  " Set up terminal foreground and underline colors. If the current version of
+  " Vim can't set underline color in the terminal or if the user does not wish
   " us to use that option (e.g., because their terminal doesn't support it),
-  " then we *replace* the foreground color with the undercurl ("special") color.
+  " then we *replace* the foreground color with the underline ("special") color.
   if has_key(a:style, 'sp')
-    if s:HasTermUnderColor() && g:abbott_term_set_undercurl_color
+    if s:HasTermUnderlineColor() && g:abbott_term_set_underline_color
       let l:term_sp = a:style.sp
     else
       let l:term_fg = a:style.sp
@@ -160,7 +160,7 @@ function! s:H(group, style)
   execute 'highlight' a:group 'term=NONE'
       \ 'ctermfg=' (exists('l:term_fg') ? s:TermColor(l:term_fg) : 'NONE')
       \ 'ctermbg=' . (has_key(a:style, 'bg') ? s:TermColor(a:style.bg) : 'NONE')
-      \ (s:HasTermUnderColor() ?
+      \ (s:HasTermUnderlineColor() ?
           \ 'ctermul=' . (exists('l:term_sp') ? s:TermColor(l:term_sp) : 'NONE')
           \ : '')
       \ 'cterm=' . (!empty(l:term_attrs) ? join(l:term_attrs, ',') : 'NONE')
@@ -233,18 +233,17 @@ call s:H('WildMenu',
     \ {'fg': s:dark_cocoa, 'bg': s:vanilla_cream, 'attrs': ['bold']})
 call s:H('VertSplit', {'fg': s:dark_cocoa, 'bg': s:zomp})
 
-" Use plain old reverse video for the blinking cursor.
 " Use an eye-catching shade of green for the blinking cursor.
 call s:H('Cursor', {'fg': s:dark_cocoa, 'bg': s:chartreuse})
 call s:H('CursorIM', {'fg': s:dark_cocoa, 'bg': s:chartreuse})
 
-" Bold the current line and column.
+" Bold the current line and column; highlight the current line number.
 call s:H('CursorLine', {'attrs': ['bold']})
 call s:H('CursorLineNr',
     \ {'fg': s:dark_cocoa, 'bg': s:lemon_meringue, 'attrs': ['bold']})
 call s:H('CursorColumn', {'attrs': ['bold']})
 
-" Darken the background of the right margin.
+" Lighten the background of the right margin.
 call s:H('ColorColumn', {'fg': s:dark_cocoa, 'bg': s:vanilla_cream})
 
 " Highlight matched delimiters in a way that's clearly distinguishable from

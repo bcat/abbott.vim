@@ -60,7 +60,7 @@ set_rgb_color () {
   printf '\e[38;2;%s;%s;%sm' "$r" "$g" "$b"
 }
 
-print_white () {
+printf_white () {
   tput setaf 231
   printf "$@"
 }
@@ -71,7 +71,7 @@ print_colors () {
 
   # Header:
   for i; do
-    print_white '  ANSI %2d ' "$i"
+    printf_white '  ANSI %2d ' "$i"
   done
   printf '\n'
 
@@ -87,7 +87,7 @@ print_colors () {
       tput rev
       printf '         '
       tput sgr0
-      tput setab 16  # Black (#000000).
+      tput setab 16  # Black (#000000)
     done
     printf '\n'
   done
@@ -95,9 +95,9 @@ print_colors () {
   # Footer:
   for i; do
   if [[ $color_list == true ]]; then
-    print_white '  #%s ' "${true_colors[i]}"
+    printf_white '  #%s ' "${true_colors[i]}"
   else
-    print_white '    %3s   ' "${indexed_colors[i]}"
+    printf_white '    %3s   ' "${indexed_colors[i]}"
   fi
   done
   printf '\n'
@@ -118,11 +118,11 @@ case $1 in
     tput civis
 
     # Blank the screen and reset cursor to the top left.
-    tput setab 16  # Black (#000000).
+    tput setab 16  # Black (#000000)
     clear
 
     # Print the color palette.
-    print_white 'abbott.vim color palette (%s color)\n\n' "$1"
+    printf_white 'abbott.vim color palette (%s color)\n\n' "$1"
     print_colors "$1" {0..7}
     printf '\n'
     print_colors "$1" {8..15}
@@ -130,7 +130,7 @@ case $1 in
     # Wait for input before exiting.
     read -r
 
-    # Exit the alternate screen and restore the cursor.
+    # Restore the cursor and exit the alternate screen.
     tput cnorm
     tput rmcup
     ;;
@@ -139,7 +139,7 @@ case $1 in
     printf "\
 usage: colors.sh approx|indexed|true
 
-Help out with the abbott.vim color palette.
+Display the abbott.vim color palette or approximate true colors with 256 colors.
 " >&2
     exit 2
 esac

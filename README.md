@@ -90,20 +90,20 @@ GNU Screen renders italics as reverse video, and since other terminals like
 hterm may show artifacts when rendering italics.
 
 ```vim
+let g:abbott_term_set_underline_color = 1
+```
+
+By default, the foreground text color will be replaced by the underline color in
+the terminal since if the terminal does not support setting the underline color
+separately, that color will be completely invisible.
+
+```vim
 let g:abbott_term_use_undercurl = 1
 ```
 
 By default, underlined text will be used in the terminal in place of undercurl,
 because some terminfo entries cause Vim to think the terminal supports undercurl
 [when it really does not](https://github.com/vim/vim/issues/3471).
-
-```vim
-let g:abbott_term_set_undercurl_color = 1
-```
-
-By default, the foreground text color will be replaced by the undercurl color in
-the terminal since if the terminal does not support setting the undercurl color
-separately, that color will be completely invisible.
 
 # License
 
