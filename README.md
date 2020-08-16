@@ -105,7 +105,10 @@ By default, underlined text will be used in the terminal in place of undercurl,
 because some terminfo entries cause Vim to think the terminal supports undercurl
 [when it really does not](https://github.com/vim/vim/issues/3471).
 
-# License
+# Contributing
 
 This color scheme is licensed under the [ISC
-license](https://github.com/bcat/abbott.vim/blob/master/LICENSE).
+license](https://github.com/bcat/abbott.vim/blob/master/LICENSE). Folks are free
+to port this color scheme to other editors and environments if they would like,
+and are encouraged to submit fixes back to the canonical `abbott.vim` repository
+if possible. Likewise, patches to support new Vim features are always welcome.
