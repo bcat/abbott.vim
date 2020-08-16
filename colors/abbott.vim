@@ -22,7 +22,7 @@
 " Approximations for 256-color terminals were chosen with the colors.sh script.
 " Unfortunately, the XTerm 256-color palette doesn't contain many shades of
 " brown, so we approximate dark cocoa (ANSI 0) and cocoa (ANSI 8) using gray
-" instead. Additionally, we use a slightly brighter approximation for orange
+" instead. Additionally, we use a slightly brighter approximation for cinnabar
 " because the closest approximation looks too reddish.
 
 " ANSI black (0), bright black (8):
@@ -30,8 +30,8 @@ let s:dark_cocoa = {'rgb': '#1f1912', 'term256': '233', 'term16': '0'}
 let s:cocoa = {'rgb': '#816749', 'term256': '242', 'term16': '8'}
 
 " ANSI red (1), bright red (9):
-let s:red = {'rgb': '#d80450', 'term256': '161', 'term16': '1'}
-let s:orange = {'rgb': '#f63f05', 'term256': '202', 'term16': '9'}
+let s:crimson = {'rgb': '#d80450', 'term256': '161', 'term16': '1'}
+let s:cinnabar = {'rgb': '#f63f05', 'term256': '202', 'term16': '9'}
 
 " ANSI green (2), bright green (10):
 let s:forest_green = {'rgb': '#24a507', 'term256': '34', 'term16': '2'}
@@ -46,7 +46,7 @@ let s:cornflower_blue = {'rgb': '#3f91f1', 'term256': '33', 'term16': '4'}
 let s:periwinkle_blue = {'rgb': '#8ccdf0', 'term256': '117', 'term16': '12'}
 
 " ANSI magenta (5), bright magenta (13):
-let s:rose = {'rgb': '#ec6c99', 'term256': '168', 'term16': '5'}
+let s:french_pink = {'rgb': '#ec6c99', 'term256': '168', 'term16': '5'}
 let s:lavender = {'rgb': '#e6a2f3', 'term256': '219', 'term16': '13'}
 
 " ANSI cyan (6), bright cyan (14):
@@ -187,24 +187,24 @@ call s:H('Normal', {'fg': s:pastel_chartreuse, 'bg': s:dark_cocoa})
 
 " Set up highlights for basic syntax groups.
 call s:H('Comment', {'fg': s:marigold, 'attrs': ['italic']})
-call s:H('Constant', {'fg': s:orange})
+call s:H('Constant', {'fg': s:cinnabar})
 call s:H('String', {'fg': s:lavender})
 call s:H('Character', {'fg': s:lavender})
 call s:H('Identifier', {'fg': s:periwinkle_blue})
-call s:H('Statement', {'fg': s:red, 'attrs': ['bold']})
-call s:H('PreProc', {'fg': s:rose})
+call s:H('Statement', {'fg': s:crimson, 'attrs': ['bold']})
+call s:H('PreProc', {'fg': s:french_pink})
 call s:H('Type', {'fg': s:forest_green})
 call s:H('Special', {'fg': s:vanilla_cream})
 call s:H('Tag', {'fg': s:lavender, 'attrs': ['underline']})
 call s:H('Underlined', {'fg': s:lavender, 'attrs': ['underline']})
 call s:H('Ignore', {'fg': s:cocoa})
-call s:H('Error', {'fg': s:dark_cocoa, 'bg': s:red})
+call s:H('Error', {'fg': s:dark_cocoa, 'bg': s:crimson})
 call s:H('Todo', {'fg': s:dark_cocoa, 'bg': s:marigold})
 
 " Set up highlights for various UI elements.
-call s:H('ErrorMsg', {'fg': s:dark_cocoa, 'bg': s:red})
-call s:H('FoldColumn', {'fg': s:orange})
-call s:H('Folded', {'fg': s:orange})
+call s:H('ErrorMsg', {'fg': s:dark_cocoa, 'bg': s:crimson})
+call s:H('FoldColumn', {'fg': s:cinnabar})
+call s:H('Folded', {'fg': s:cinnabar})
 call s:H('LineNr', {'fg': s:lemon_meringue})
 call s:H('ModeMsg', {'attrs': ['bold']})
 call s:H('MoreMsg', {'fg': s:cornflower_blue, 'attrs': ['bold']})
@@ -213,7 +213,7 @@ call s:H('PmenuSel',
     \ {'fg': s:dark_cocoa, 'bg': s:vanilla_cream, 'attrs': ['bold']})
 call s:H('PmenuSbar', {'bg': s:zomp})
 call s:H('PmenuThumb', {'bg': s:vanilla_cream})
-call s:H('Question', {'fg': s:rose, 'attrs': ['bold']})
+call s:H('Question', {'fg': s:french_pink, 'attrs': ['bold']})
 call s:H('QuickFixLine',
     \ {'fg': s:dark_cocoa, 'bg': s:vanilla_cream, 'attrs': ['bold']})
 call s:H('SignColumn', {'fg': s:dark_cocoa, 'bg': s:zomp})
@@ -227,8 +227,8 @@ call s:H('TabLine', {'fg': s:dark_cocoa, 'bg': s:zomp})
 call s:H('TabLineFill', {'bg': s:zomp})
 call s:H('TabLineSel',
     \ {'fg': s:dark_cocoa, 'bg': s:cornflower_blue, 'attrs': ['bold']})
-call s:H('Title', {'fg': s:red, 'attrs': ['bold']})
-call s:H('WarningMsg', {'fg': s:dark_cocoa, 'bg': s:rose})
+call s:H('Title', {'fg': s:crimson, 'attrs': ['bold']})
+call s:H('WarningMsg', {'fg': s:dark_cocoa, 'bg': s:french_pink})
 call s:H('WildMenu',
     \ {'fg': s:dark_cocoa, 'bg': s:vanilla_cream, 'attrs': ['bold']})
 call s:H('VertSplit', {'fg': s:dark_cocoa, 'bg': s:zomp})
@@ -265,10 +265,10 @@ call s:H('IncSearch', {'fg': s:dark_cocoa, 'bg': s:seafoam_green})
 call s:H('Search', {'fg': s:dark_cocoa, 'bg': s:vanilla_cream})
 
 " Set up spell-checking in an unobtrusive way.
-call s:H('SpellBad', {'sp': s:red, 'attrs': ['undercurl']})
+call s:H('SpellBad', {'sp': s:crimson, 'attrs': ['undercurl']})
 call s:H('SpellCap', {'sp': s:periwinkle_blue, 'attrs': ['undercurl']})
 call s:H('SpellLocal', {'sp': s:lemon_meringue, 'attrs': ['undercurl']})
-call s:H('SpellRare', {'sp': s:rose, 'attrs': ['undercurl']})
+call s:H('SpellRare', {'sp': s:french_pink, 'attrs': ['undercurl']})
 
 " Don't do anything special for concealed tokens.
 call s:H('Conceal', {})
@@ -278,13 +278,13 @@ call s:H('Directory', {'fg': s:periwinkle_blue})
 
 " Use readable diff highlights. :)
 call s:H('DiffAdd', {'fg': s:dark_cocoa, 'bg': s:chartreuse, 'attrs': ['bold']})
-call s:H('DiffChange', {'fg': s:dark_cocoa, 'bg': s:rose})
-call s:H('DiffDelete', {'fg': s:dark_cocoa, 'bg': s:red})
+call s:H('DiffChange', {'fg': s:dark_cocoa, 'bg': s:french_pink})
+call s:H('DiffDelete', {'fg': s:dark_cocoa, 'bg': s:crimson})
 call s:H('DiffText',
     \ {'fg': s:dark_cocoa, 'bg': s:seafoam_green, 'attrs': ['bold']})
 
 " Set up custom highlights for better-whitespace.vim.
-call s:H('ExtraWhitespace', {'fg': s:dark_cocoa, 'bg': s:red})
+call s:H('ExtraWhitespace', {'fg': s:dark_cocoa, 'bg': s:crimson})
 
 " Set up custom highlights for gitcommit.vim.
 call s:H('gitcommitSummary', {'attrs': ['bold']})
@@ -297,15 +297,15 @@ highlight link texStatement PreProc
 if g:abbott_set_term_ansi_colors
   let g:terminal_ansi_colors = [
       \ s:dark_cocoa.rgb,
-      \ s:red.rgb,
+      \ s:crimson.rgb,
       \ s:forest_green.rgb,
       \ s:marigold.rgb,
       \ s:cornflower_blue.rgb,
-      \ s:rose.rgb,
+      \ s:french_pink.rgb,
       \ s:zomp.rgb,
       \ s:pastel_chartreuse.rgb,
       \ s:cocoa.rgb,
-      \ s:orange.rgb,
+      \ s:cinnabar.rgb,
       \ s:chartreuse.rgb,
       \ s:lemon_meringue.rgb,
       \ s:periwinkle_blue.rgb,

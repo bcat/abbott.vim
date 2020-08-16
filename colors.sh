@@ -19,15 +19,15 @@
 
 true_colors=(
   1f1912  # 0: dark_cocoa
-  d80450  # 1: red
+  d80450  # 1: crimson
   24a507  # 2: forest_green
   fbb32f  # 3: marigold
   3f91f1  # 4: cornflower_blue
-  ec6c99  # 5: rose
+  ec6c99  # 5: french_pink
   39a78d  # 6: zomp
   d8ff84  # 7: pastel_chartreuse
   816749  # 8: cocoa
-  f63f05  # 9: orange
+  f63f05  # 9: cinnabar
   a0ea00  # 10: chartreuse
   fbec5d  # 11: lemon_meringue
   8ccdf0  # 12: periwinkle_blue
@@ -38,15 +38,15 @@ true_colors=(
 
 indexed_colors=(
   233  # 0: dark_cocoa
-  161  # 1: red
+  161  # 1: crimson
   34  # 2: forest_green
   214  # 3: marigold
   33  # 4: cornflower_blue
-  168  # 5: rose
+  168  # 5: french_pink
   36  # 6: zomp
   192  # 7: pastel_chartreuse
   242  # 8: cocoa
-  202  # 9: orange
+  202  # 9: cinnabar
   154  # 10: chartreuse
   227  # 11: lemon_meringue
   117  # 12: periwinkle_blue
