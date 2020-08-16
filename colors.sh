@@ -122,7 +122,7 @@ case $1 in
     clear
 
     # Print the color palette.
-    print_white 'abbott.vim color palette\n\n'
+    print_white 'abbott.vim color palette (%s color)\n\n' "$1"
     print_colors "$1" {0..7}
     printf '\n'
     print_colors "$1" {8..15}

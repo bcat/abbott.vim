@@ -19,13 +19,7 @@
 " palette. Indeed, the terminal emulator can be configured to use these colors
 " instead of its standard palette without issues.
 "
-" Approximations for 256-color terminals were chosen with the help of a script
-" (https://github.com/bcat/dotfiles/blob/master/bin/termapprox):
-"
-" $ xrdb -query | grep ^XTerm.vt100.color | \
-"     sed 's/^XTerm\.vt100\.color\([0-9]*\):/\1/' | sort -nk1 | cut -f2 | \
-"     xargs -n1 termapprox -stn16
-"
+" Approximations for 256-color terminals were chosen with the colors.sh script.
 " Unfortunately, the XTerm 256-color palette doesn't contain many shades of
 " brown, so we approximate dark cocoa (ANSI 0) and cocoa (ANSI 8) using gray
 " instead. Additionally, we use a slightly brighter approximation for orange
@@ -83,27 +77,24 @@ if !exists('g:abbott_set_term_ansi_colors')
   let g:abbott_set_term_ansi_colors = 0
 endif
 
-" The g:abbott_term_use_italic option enables the use of italics in the
-" terminal. This is disabled by default since the default terminfo for GNU
-" Screen renders italics as reverse video, and since other terminals like hterm
-" may show artifacts when rendering italics.
+" By default, Italics in the terminal are disabled since the default terminfo
+" for GNU Screen renders italics as reverse video, and since other terminals
+" like hterm may show artifacts when rendering italics.
 if !exists('g:abbott_term_use_italics')
   let g:abbott_term_use_italics = 0
 endif
 
-" The g:abbott_term_use_undercurl option enables the use of undercurl in the
-" terminal. By default, underlined text will be used instead, because some
-" terminfo entries cause Vim to think the terminal supports undercurl when it
-" really does not (https://github.com/vim/vim/issues/3471).
+" By default, underlined text will be used in the terminal in place of
+" undercurl, because some terminfo entries cause Vim to think the terminal
+" supports undercurl when it really does not
+" (https://github.com/vim/vim/issues/3471).
 if !exists('g:abbott_term_use_undercurl')
   let g:abbott_term_use_undercurl = 0
 endif
 
-" The g:abbott_term_set_undercurl_color option attempts to set the undercurl
-" color separately from the text color. This prevents spell checking from
-" interfering with normal syntax highlighting. By default, the foreground text
-" color will be replaced by the undercurl color in the terminal since otherwise
-" that color will not be visible at all.
+" By default, the foreground text color will be replaced by the undercurl color
+" in the terminal since if the terminal does not support setting the undercurl
+" color separately, that color will be completely invisible.
 if !exists('g:abbott_term_set_undercurl_color')
   let g:abbott_term_set_undercurl_color = 0
 endif

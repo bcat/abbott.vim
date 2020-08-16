@@ -1,37 +1,111 @@
-`abbott.vim` is an oddly-named dark Vim color scheme. It's primarily designed
-for editing files with a lot of plain text (i.e., TeX documents), but it
-should be fairly decent for other sorts of files as well. The color scheme
-draws on several sources, including memories of late nights spent working on
-real analysis homework and drinking copious amounts of Mountain Dew.
+`abbott.vim` is a warm, dark color scheme for prose and code, with pastels and
+pretty greens. It's primarily designed for editing files with a lot of plain
+text (i.e., Markdown or TeX documents), but it handles executable code well too.
+This color scheme draws inspiration from several sources, including memories of
+late nights working mathematical proofs—it's named after Stephen Abbott's
+_Understanding Analysis_, which I was studying at the time—and drinking copious
+quantities of Mountain Dew.
 
-# Screenshots #
+# Screenshots
 
 Because hey, it's a color scheme! That's what you really want to see, right?
 
-![(abbott.vim editing this README)](http://i.imgur.com/RHcRw.png)
+[![abbott.vim 2.0:
+Vimscript](https://i.imgur.com/Ca3f671.png)](https://imgur.com/Ca3f671)
 
-([More here.][1])
+[![abbott.vim 2.0:
+Python](https://i.imgur.com/PRxNLkg.png)](https://imgur.com/PRxNLkg)
 
-# Features & characteristics #
+[![abbott.vim 2.0:
+Markdown](https://i.imgur.com/Yfph0g7.png)](https://imgur.com/Yfph0g7)
 
-*   `abbott.vim` is a dark theme and only a dark theme.
-*   `abbott.vim` is not a low contrast theme; however, does attempt to avoid
-    excessive text contrast. Plain text is light green on dark brown rather
-    than white on black.
-*   `abbott.vim` supports all highlight groups featured in Vim 7.3, as well as
-the [bad-whitespace][2] plugin.
-*   `abbott.vim` currently sets only GUI colors. Terminal users are encouraged
-to try it with the [CSApprox][3] plugin as this seems to give decent results.
+[![abbott.vim 2.0:
+C](https://i.imgur.com/GWWh6u3.png)](https://imgur.com/GWWh6u3)
 
-# Future directions #
+Compare to [screenshots from older versions](https://imgur.com/a/7woPY) to see
+how this color scheme has evolved.
 
-*   Make the color choices suck less. (May be impossible given my lack of
-artistic talent.)
-*   Add custom highlights for other plugins. (Ideas, anyone?)
-*   Add native support for 88- and 256-color terminals. (CSApprox is great,
-    but I think hand-picked terminal colors would give nicer looking
-    approximations in some cases.)
+# Colors
 
-[1]: http://imgur.com/a/7woPY
-[2]: https://github.com/bitc/vim-bad-whitespace
-[3]: https://github.com/godlygeek/csapprox
+This color scheme uses a 16-color palette that maps nicely onto the ANSI color
+palette:
+
+[![abbott.vim: Color Palette (True
+Color)](https://i.imgur.com/v8aJdp6.png)](https://imgur.com/v8aJdp6)
+
+`abbott.vim` looks best where RGB colors are supported, either in the gVim GUI
+or in [a terminal supporting true
+colors](https://github.com/termstandard/colors) with Vim's `termguicolors`
+option enabled. You can use this color scheme in a 256-color terminal instead,
+if you like, and you'll get the following approximated palette:
+
+[![abbott.vim 2.0: Color Palette (Indexed
+Color)](https://i.imgur.com/WTmRrMg.png)](https://imgur.com/WTmRrMg)
+
+The colors are pretty close, but the brown colors (ANSI colors 0 and 8) are
+replaced with shades of gray since the XTerm 256-color palette doesn't have many
+shades of brown to choose from.
+
+# Features
+
+* This color scheme is a dark theme that attempts to avoid excessive text
+  contrast. Plain text is light green on dark brown to be easy on the eyes after
+  long hours. Additionally, care has been taken to ensure the color palette
+  looks decent in "night light" mode (e.g., with
+  [f.lux](https://justgetflux.com/) or other blue light filters enabled).
+* This color scheme supports all highlight groups in Vim 8.2, as well as the
+  [Better Whitespace](https://github.com/ntpeters/vim-better-whitespace) plugin.
+* Additional plugin-specific highlight groups may be added in the future.
+
+# Options
+
+This color scheme offers some additional features that are disabled by default
+because they may not interact well with all terminals or with other Vim color
+schemes. These features can be enabled if the user likes to live dangerously.
+
+```vim
+let g:abbott_force_16_colors = 1
+```
+
+If requested by the user, restrain ourselves to only the 16 standard ANSI
+terminal colors even if Vim thinks the terminal supports 256 colors. This allows
+the user to configure their terminal emulator to use the 16 colors defined above
+for its ANSI palette, allowing exact color matches rather than 256-color
+approximations even in terminals that don't support true color.
+
+```vim
+let g:abbott_set_term_ansi_colors = 1
+```
+
+If requested by the user, use our standard 16-color palette for the embedded
+terminal. We don't do this by default because unlike the highlight groups above,
+this isn't automatically cleared when another color scheme is selected.
+
+```vim
+let g:abbott_term_use_italics = 1
+```
+
+By default, Italics in the terminal are disabled since the default terminfo for
+GNU Screen renders italics as reverse video, and since other terminals like
+hterm may show artifacts when rendering italics.
+
+```vim
+let g:abbott_term_use_undercurl = 1
+```
+
+By default, underlined text will be used in the terminal in place of undercurl,
+because some terminfo entries cause Vim to think the terminal supports undercurl
+[when it really does not](https://github.com/vim/vim/issues/3471).
+
+```vim
+let g:abbott_term_set_undercurl_color = 1
+```
+
+By default, the foreground text color will be replaced by the undercurl color in
+the terminal since if the terminal does not support setting the undercurl color
+separately, that color will be completely invisible.
+
+# License
+
+This color scheme is licensed under the [ISC
+license](https://github.com/bcat/abbott.vim/blob/master/LICENSE).
