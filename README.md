@@ -1,3 +1,5 @@
+# `abbott.vim`
+
 `abbott.vim` is a warm, dark color scheme for prose and code, with pastels and
 pretty greens. It's primarily designed for editing files with a lot of plain
 text (i.e., Markdown or TeX documents), but it handles executable code well too.
@@ -6,7 +8,7 @@ late nights working mathematical proofs—it's named after Stephen Abbott's
 _Understanding Analysis_, which I was studying at the time—and drinking copious
 quantities of Mountain Dew.
 
-# Screenshots
+## Screenshots
 
 Because hey, it's a color scheme! That's what you really want to see, right?
 
@@ -25,7 +27,7 @@ C](https://i.imgur.com/GWWh6u3.png)](https://imgur.com/GWWh6u3)
 Compare to [screenshots from older versions](https://imgur.com/a/7woPY) to see
 how this color scheme has evolved.
 
-# Colors
+## Colors
 
 This color scheme uses a 16-color palette that maps nicely onto the ANSI color
 palette:
@@ -46,7 +48,7 @@ The colors are pretty close, but the brown colors (ANSI colors 0 and 8) are
 replaced with shades of gray since the XTerm 256-color palette doesn't have many
 shades of brown to choose from.
 
-# Features
+## Features
 
 * This color scheme is a dark theme that attempts to avoid excessive text
   contrast. Plain text is light green on dark brown to be easy on the eyes after
@@ -57,7 +59,7 @@ shades of brown to choose from.
   [Better Whitespace](https://github.com/ntpeters/vim-better-whitespace) plugin.
 * Additional plugin-specific highlight groups may be added in the future.
 
-# Options
+## Options
 
 This color scheme offers some additional features that are disabled by default
 because they may not interact well with all terminals or with other Vim color
@@ -105,10 +107,11 @@ By default, underlined text will be used in the terminal in place of undercurl,
 because some terminfo entries cause Vim to think the terminal supports undercurl
 [when it really does not](https://github.com/vim/vim/issues/3471).
 
-# Contributing
+## Contributing
 
 This color scheme is licensed under the [ISC
 license](https://github.com/bcat/abbott.vim/blob/master/LICENSE). Folks are free
 to port this color scheme to other editors and environments if they would like,
 and are encouraged to submit fixes back to the canonical `abbott.vim` repository
 if possible. Likewise, patches to support new Vim features are always welcome.
+Consult the [changelog](CHANGES.md) for version history.
