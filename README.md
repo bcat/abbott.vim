@@ -40,7 +40,7 @@ option enabled. You can use this color scheme in a 256-color terminal instead,
 if you like, and you'll get the following approximated palette:
 
 [![abbott.vim 2.0: Color Palette (Indexed
-Color)](https://i.imgur.com/WTmRrMg.png)](https://imgur.com/WTmRrMg)
+Color)](https://i.imgur.com/suZb6ZH.png)](https://imgur.com/suZb6ZH)
 
 The colors are pretty close, but the brown colors (ANSI colors 0 and 8) are
 replaced with shades of gray since the XTerm 256-color palette doesn't have many

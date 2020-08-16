@@ -42,7 +42,7 @@ indexed_colors=(
   34  # 2: forest_green
   214  # 3: marigold
   33  # 4: cornflower_blue
-  168  # 5: french_pink
+  204  # 5: french_pink
   36  # 6: zomp
   192  # 7: pastel_chartreuse
   242  # 8: cocoa

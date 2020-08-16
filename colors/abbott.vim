@@ -23,7 +23,8 @@
 " Unfortunately, the XTerm 256-color palette doesn't contain many shades of
 " brown, so we approximate dark cocoa (ANSI 0) and cocoa (ANSI 8) using gray
 " instead. Additionally, we use a slightly brighter approximation for cinnabar
-" because the closest approximation looks too reddish.
+" and French pink because the closest approximations look too reddish and too
+" dull, respectively.
 
 " ANSI black (0), bright black (8):
 let s:dark_cocoa = {'rgb': '#1f1912', 'term256': '233', 'term16': '0'}
@@ -46,7 +47,7 @@ let s:cornflower_blue = {'rgb': '#3f91f1', 'term256': '33', 'term16': '4'}
 let s:periwinkle_blue = {'rgb': '#8ccdf0', 'term256': '117', 'term16': '12'}
 
 " ANSI magenta (5), bright magenta (13):
-let s:french_pink = {'rgb': '#ec6c99', 'term256': '168', 'term16': '5'}
+let s:french_pink = {'rgb': '#ec6c99', 'term256': '204', 'term16': '5'}
 let s:lavender = {'rgb': '#e6a2f3', 'term256': '219', 'term16': '13'}
 
 " ANSI cyan (6), bright cyan (14):
