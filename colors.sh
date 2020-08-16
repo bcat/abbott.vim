@@ -107,7 +107,7 @@ case $1 in
   approx)
     # Uses this Python script to compute the approximations:
     # https://github.com/bcat/dotfiles/blob/master/bin/termapprox.
-    for color in "${colors[@]}"; do
+    for color in "${true_colors[@]}"; do
       termapprox -stn16 "$color"
     done
     ;;
