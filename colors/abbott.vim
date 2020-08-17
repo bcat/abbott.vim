@@ -21,14 +21,14 @@
 "
 " Approximations for 256-color terminals were chosen with the colors.sh script.
 " Unfortunately, the XTerm 256-color palette doesn't contain many shades of
-" brown, so we approximate dark cocoa (ANSI 0) and cocoa (ANSI 8) using gray
+" brown, so we approximate bistre (ANSI 0) and cocoa (ANSI 8) using gray
 " instead. Additionally, we use a slightly brighter approximation for cinnabar
 " and French pink because the closest approximations look too reddish and too
 " dull, respectively.
 
 " ANSI black (0), bright black (8):
-let s:dark_cocoa = {'rgb': '#1f1912', 'term256': '233', 'term16': '0'}
-let s:cocoa = {'rgb': '#816749', 'term256': '242', 'term16': '8'}
+let s:bistre = {'rgb': '#251e16', 'term256': '234', 'term16': '0'}
+let s:cocoa = {'rgb': '#745d42', 'term256': '241', 'term16': '8'}
 
 " ANSI red (1), bright red (9):
 let s:crimson = {'rgb': '#d80450', 'term256': '161', 'term16': '1'}
@@ -57,6 +57,14 @@ let s:seafoam_green = {'rgb': '#00ff7f', 'term256': '48', 'term16': '14'}
 " ANSI white (7), bright white (15):
 let s:pastel_chartreuse = {'rgb': '#d8ff84', 'term256': '192', 'term16': '7'}
 let s:vanilla_cream = {'rgb': '#fef3b4', 'term256': '229', 'term16': '15'}
+
+" Additionally, define an extra shade of brown for use in highlighted lines and
+" columns. For 256-color terminals, we map this to a shade of gray like bistre
+" and cocoa. For 16-color terminals, since we don't have an extra color, we map
+" this to the same color as cocoa. That doesn't give a ton of contrast, but it's
+" the best we can do.
+
+let s:chocolate = {'rgb': '#423425', 'term256': '237', 'term16': '8'}
 
 " This color scheme offers some additional features that are disabled by default
 " because they may not interact well with all terminals or with other Vim color
@@ -184,7 +192,7 @@ endif
 let g:colors_name = 'abbott'
 
 " Set default foreground and background colors.
-call s:H('Normal', {'fg': s:pastel_chartreuse, 'bg': s:dark_cocoa})
+call s:H('Normal', {'fg': s:pastel_chartreuse, 'bg': s:bistre})
 
 " Set up highlights for basic syntax groups.
 call s:H('Comment', {'fg': s:marigold, 'attrs': ['italic']})
@@ -199,57 +207,54 @@ call s:H('Special', {'fg': s:vanilla_cream})
 call s:H('Tag', {'fg': s:lavender, 'attrs': ['underline']})
 call s:H('Underlined', {'fg': s:lavender, 'attrs': ['underline']})
 call s:H('Ignore', {'fg': s:cocoa})
-call s:H('Error', {'fg': s:dark_cocoa, 'bg': s:crimson})
-call s:H('Todo', {'fg': s:dark_cocoa, 'bg': s:marigold})
+call s:H('Error', {'fg': s:bistre, 'bg': s:crimson})
+call s:H('Todo', {'fg': s:bistre, 'bg': s:marigold})
 
 " Set up highlights for various UI elements.
-call s:H('ErrorMsg', {'fg': s:dark_cocoa, 'bg': s:crimson})
+call s:H('ErrorMsg', {'fg': s:bistre, 'bg': s:crimson})
 call s:H('FoldColumn', {'fg': s:cinnabar})
 call s:H('Folded', {'fg': s:cinnabar})
 call s:H('LineNr', {'fg': s:lemon_meringue})
 call s:H('ModeMsg', {'attrs': ['bold']})
 call s:H('MoreMsg', {'fg': s:cornflower_blue, 'attrs': ['bold']})
-call s:H('Pmenu', {'fg': s:dark_cocoa, 'bg': s:cocoa})
-call s:H('PmenuSel',
-    \ {'fg': s:dark_cocoa, 'bg': s:vanilla_cream, 'attrs': ['bold']})
-call s:H('PmenuSbar', {'bg': s:zomp})
-call s:H('PmenuThumb', {'bg': s:vanilla_cream})
+call s:H('Pmenu', {'fg': s:vanilla_cream, 'bg': s:cocoa})
+call s:H('PmenuSel', {'fg': s:bistre, 'bg': s:vanilla_cream, 'attrs': ['bold']})
+call s:H('PmenuSbar', {'bg': s:cocoa})
+call s:H('PmenuThumb', {'bg': s:bistre})
 call s:H('Question', {'fg': s:french_pink, 'attrs': ['bold']})
 call s:H('QuickFixLine',
-    \ {'fg': s:dark_cocoa, 'bg': s:vanilla_cream, 'attrs': ['bold']})
-call s:H('SignColumn', {'fg': s:dark_cocoa, 'bg': s:zomp})
+    \ {'fg': s:bistre, 'bg': s:vanilla_cream, 'attrs': ['bold']})
+call s:H('SignColumn', {'fg': s:bistre, 'bg': s:zomp})
 call s:H('StatusLine',
-    \ {'fg': s:dark_cocoa, 'bg': s:cornflower_blue, 'attrs': ['bold']})
-call s:H('StatusLineNC', {'fg': s:dark_cocoa, 'bg': s:zomp})
+    \ {'fg': s:bistre, 'bg': s:cornflower_blue, 'attrs': ['bold']})
+call s:H('StatusLineNC', {'fg': s:bistre, 'bg': s:zomp})
 call s:H('StatusLineTerm',
-    \ {'fg': s:dark_cocoa, 'bg': s:cornflower_blue, 'attrs': ['bold']})
-call s:H('StatusLineTermNC', {'fg': s:dark_cocoa, 'bg': s:zomp})
-call s:H('TabLine', {'fg': s:dark_cocoa, 'bg': s:zomp})
+    \ {'fg': s:bistre, 'bg': s:cornflower_blue, 'attrs': ['bold']})
+call s:H('StatusLineTermNC', {'fg': s:bistre, 'bg': s:zomp})
+call s:H('TabLine', {'fg': s:bistre, 'bg': s:zomp})
 call s:H('TabLineFill', {'bg': s:zomp})
 call s:H('TabLineSel',
-    \ {'fg': s:dark_cocoa, 'bg': s:cornflower_blue, 'attrs': ['bold']})
+    \ {'fg': s:bistre, 'bg': s:cornflower_blue, 'attrs': ['bold']})
 call s:H('Title', {'fg': s:crimson, 'attrs': ['bold']})
-call s:H('WarningMsg', {'fg': s:dark_cocoa, 'bg': s:french_pink})
-call s:H('WildMenu',
-    \ {'fg': s:dark_cocoa, 'bg': s:vanilla_cream, 'attrs': ['bold']})
-call s:H('VertSplit', {'fg': s:dark_cocoa, 'bg': s:zomp})
+call s:H('WarningMsg', {'fg': s:bistre, 'bg': s:french_pink})
+call s:H('WildMenu', {'fg': s:bistre, 'bg': s:vanilla_cream, 'attrs': ['bold']})
+call s:H('VertSplit', {'fg': s:bistre, 'bg': s:zomp})
 
 " Use an eye-catching shade of green for the blinking cursor.
 call s:H('Cursor', {'fg': s:dark_cocoa, 'bg': s:chartreuse})
 call s:H('CursorIM', {'fg': s:dark_cocoa, 'bg': s:chartreuse})
 
 " Bold the current line and column; highlight the current line number.
-call s:H('CursorLine', {'attrs': ['bold']})
-call s:H('CursorLineNr',
-    \ {'fg': s:dark_cocoa, 'bg': s:lemon_meringue, 'attrs': ['bold']})
-call s:H('CursorColumn', {'attrs': ['bold']})
+call s:H('CursorLine', {'bg': s:chocolate})
+call s:H('CursorLineNr', {'bg': s:chocolate, 'attrs': ['bold']})
+call s:H('CursorColumn', {'bg': s:chocolate})
 
 " Lighten the background of the right margin.
-call s:H('ColorColumn', {'fg': s:dark_cocoa, 'bg': s:vanilla_cream})
+call s:H('ColorColumn', {'bg': s:chocolate})
 
 " Highlight matched delimiters in a way that's clearly distinguishable from
 " unmatched delimiter/statement/preprocessor highlighting.
-call s:H('MatchParen', {'fg': s:dark_cocoa, 'bg': s:cocoa, 'attrs': ['bold']})
+call s:H('MatchParen', {'fg': s:bistre, 'bg': s:cocoa, 'attrs': ['bold']})
 
 " Set up highlights for imaginary '~' and '@' characters, and for special keys.
 call s:H('EndOfBuffer', {'fg': s:cocoa})
@@ -257,13 +262,13 @@ call s:H('NonText', {'fg': s:seafoam_green})
 call s:H('SpecialKey', {'fg': s:seafoam_green})
 
 " Set a vibrant background for visual mode.
-call s:H('Visual', {'fg': s:dark_cocoa, 'bg': s:chartreuse})
-call s:H('VisualNOS', {'fg': s:dark_cocoa, 'bg': s:seafoam_green})
+call s:H('Visual', {'fg': s:bistre, 'bg': s:chartreuse})
+call s:H('VisualNOS', {'fg': s:bistre, 'bg': s:seafoam_green})
 
 " Use cold highlights for incremental searching and warm highlights for final
 " search results.
-call s:H('IncSearch', {'fg': s:dark_cocoa, 'bg': s:seafoam_green})
-call s:H('Search', {'fg': s:dark_cocoa, 'bg': s:vanilla_cream})
+call s:H('IncSearch', {'fg': s:bistre, 'bg': s:seafoam_green})
+call s:H('Search', {'fg': s:bistre, 'bg': s:vanilla_cream})
 
 " Set up spell-checking in an unobtrusive way.
 call s:H('SpellBad', {'sp': s:crimson, 'attrs': ['undercurl']})
@@ -278,14 +283,13 @@ call s:H('Conceal', {})
 call s:H('Directory', {'fg': s:periwinkle_blue})
 
 " Use readable diff highlights. :)
-call s:H('DiffAdd', {'fg': s:dark_cocoa, 'bg': s:chartreuse, 'attrs': ['bold']})
-call s:H('DiffChange', {'fg': s:dark_cocoa, 'bg': s:french_pink})
-call s:H('DiffDelete', {'fg': s:dark_cocoa, 'bg': s:crimson})
-call s:H('DiffText',
-    \ {'fg': s:dark_cocoa, 'bg': s:seafoam_green, 'attrs': ['bold']})
+call s:H('DiffAdd', {'fg': s:bistre, 'bg': s:chartreuse, 'attrs': ['bold']})
+call s:H('DiffChange', {'fg': s:bistre, 'bg': s:french_pink})
+call s:H('DiffDelete', {'fg': s:bistre, 'bg': s:crimson})
+call s:H('DiffText', {'fg': s:bistre, 'bg': s:seafoam_green, 'attrs': ['bold']})
 
 " Set up custom highlights for better-whitespace.vim.
-call s:H('ExtraWhitespace', {'fg': s:dark_cocoa, 'bg': s:crimson})
+call s:H('ExtraWhitespace', {'fg': s:bistre, 'bg': s:crimson})
 
 " Set up custom highlights for gitcommit.vim.
 call s:H('gitcommitSummary', {'attrs': ['bold']})
@@ -297,7 +301,7 @@ highlight link texStatement PreProc
 " Set up the embedded terminal.
 if g:abbott_set_term_ansi_colors
   let g:terminal_ansi_colors = [
-      \ s:dark_cocoa.rgb,
+      \ s:bistre.rgb,
       \ s:crimson.rgb,
       \ s:forest_green.rgb,
       \ s:marigold.rgb,
