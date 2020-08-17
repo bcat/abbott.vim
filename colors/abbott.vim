@@ -27,7 +27,7 @@
 " dull, respectively.
 
 " ANSI black (0), bright black (8):
-let s:bistre = {'rgb': '#251e16', 'term256': '234', 'term16': '0'}
+let s:bistre = {'rgb': '#231c14', 'term256': '234', 'term16': '0'}
 let s:cocoa = {'rgb': '#745d42', 'term256': '241', 'term16': '8'}
 
 " ANSI red (1), bright red (9):
@@ -64,7 +64,7 @@ let s:vanilla_cream = {'rgb': '#fef3b4', 'term256': '229', 'term16': '15'}
 " this to the same color as cocoa. That doesn't give a ton of contrast, but it's
 " the best we can do.
 
-let s:chocolate = {'rgb': '#423425', 'term256': '237', 'term16': '8'}
+let s:chocolate = {'rgb': '#3c3022', 'term256': '236', 'term16': '8'}
 
 " This color scheme offers some additional features that are disabled by default
 " because they may not interact well with all terminals or with other Vim color

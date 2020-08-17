@@ -18,7 +18,7 @@
 # PERFORMANCE OF THIS SOFTWARE.
 
 true_colors=(
-  251e16  # 0: bistre
+  231c14  # 0: bistre
   d80450  # 1: crimson
   24a507  # 2: forest_green
   fbb32f  # 3: marigold
