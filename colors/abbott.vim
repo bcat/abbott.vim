@@ -55,7 +55,7 @@ let s:zomp = {'rgb': '#39a78d', 'term256': '36', 'term16': '6'}
 let s:seafoam_green = {'rgb': '#00ff7f', 'term256': '48', 'term16': '14'}
 
 " ANSI white (7), bright white (15):
-let s:pastel_chartreuse = {'rgb': '#d8ff84', 'term256': '192', 'term16': '6'}
+let s:pastel_chartreuse = {'rgb': '#d8ff84', 'term256': '192', 'term16': '7'}
 let s:vanilla_cream = {'rgb': '#fef3b4', 'term256': '229', 'term16': '15'}
 
 " This color scheme offers some additional features that are disabled by default
