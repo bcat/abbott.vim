@@ -241,8 +241,8 @@ call s:H('WildMenu', {'fg': s:bistre, 'bg': s:vanilla_cream, 'attrs': ['bold']})
 call s:H('VertSplit', {'fg': s:bistre, 'bg': s:zomp})
 
 " Use an eye-catching shade of green for the blinking cursor.
-call s:H('Cursor', {'fg': s:dark_cocoa, 'bg': s:chartreuse})
-call s:H('CursorIM', {'fg': s:dark_cocoa, 'bg': s:chartreuse})
+call s:H('Cursor', {'fg': s:bistre, 'bg': s:chartreuse})
+call s:H('CursorIM', {'fg': s:bistre, 'bg': s:seafoam_green})
 
 " Bold the current line and column; highlight the current line number.
 call s:H('CursorLine', {'bg': s:chocolate})
