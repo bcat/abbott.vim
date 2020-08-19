@@ -213,7 +213,7 @@ call s:H('Todo', {'fg': s:bistre, 'bg': s:marigold})
 
 " Set up highlights for various UI elements.
 call s:H('ErrorMsg', {'fg': s:bistre, 'bg': s:crimson})
-call s:H('FoldColumn', {'fg': s:cinnabar})
+call s:H('FoldColumn', {'fg': s:marigold})
 call s:H('Folded', {'fg': s:cinnabar})
 call s:H('LineNr', {'fg': s:lemon_meringue})
 call s:H('ModeMsg', {'attrs': ['bold']})
