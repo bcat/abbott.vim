@@ -292,6 +292,10 @@ call s:H('DiffText', {'fg': s:bistre, 'bg': s:seafoam_green, 'attrs': ['bold']})
 " Set up custom highlights for better-whitespace.vim.
 call s:H('ExtraWhitespace', {'fg': s:bistre, 'bg': s:crimson})
 
+" Set up custom highlights for diff.vim
+highlight link diffAdded DiffAdd
+highlight link diffRemoved DiffDelete
+
 " Set up custom highlights for gitcommit.vim.
 call s:H('gitcommitSummary', {'attrs': ['bold']})
 highlight link gitcommitOverflow Error
