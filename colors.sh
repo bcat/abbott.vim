@@ -3,7 +3,7 @@
 # abbott.vim <https://github.com/bcat/abbott.vim>
 # A warm, dark color scheme for prose and code, with pastels and pretty greens.
 #
-# Copyright 2020 Jonathan Rascher
+# Copyright 2020-2021 Jonathan Rascher
 #
 # Permission to use, copy, modify, and/or distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
@@ -18,6 +18,7 @@
 # PERFORMANCE OF THIS SOFTWARE.
 
 true_colors=(
+  # Terminal colors:
   231c14  # 0: bistre
   d80450  # 1: crimson
   24a507  # 2: forest_green
@@ -34,9 +35,13 @@ true_colors=(
   e6a2f3  # 13: lavender
   00ff7f  # 14: seafoam_green
   fef3b4  # 15: vanilla_cream
+
+  # Additional colors:
+  3c3022  # chocolate
 )
 
 indexed_colors=(
+  # Terminal colors:
   234  # 0: bistre
   161  # 1: crimson
   34  # 2: forest_green
@@ -53,6 +58,9 @@ indexed_colors=(
   219  # 13: lavender
   48  # 14: seafoam_green
   229  # 15: vanilla_cream
+
+  # Additional colors:
+  235  # chocolate
 )
 
 set_rgb_color () {
@@ -70,10 +78,12 @@ print_colors () {
   shift
 
   # Header:
-  for i; do
-    printf_white '  ANSI %2d ' "$i"
-  done
-  printf '\n'
+  if (( $1 < 16 )); then
+    for i; do
+      printf_white '  ANSI %2d ' "$i"
+    done
+    printf '\n'
+  fi
 
   # Colors:
   for row in {0..3}; do
@@ -123,9 +133,12 @@ case $1 in
 
     # Print the color palette.
     printf_white 'abbott.vim color palette (%s color)\n\n' "$1"
+    printf_white 'Terminal colors:\n\n'
     print_colors "$1" {0..7}
     printf '\n'
     print_colors "$1" {8..15}
+    printf_white '\nAdditional colors:\n\n'
+    print_colors "$1" {16..16}
 
     # Wait for input before exiting.
     read -r
