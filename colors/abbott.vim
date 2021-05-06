@@ -1,7 +1,7 @@
 " abbott.vim <https://github.com/bcat/abbott.vim>
 " A warm, dark color scheme for prose and code, with pastels and pretty greens.
 "
-" Copyright 2011-2013, 2015, 2017, 2020 Jonathan Rascher
+" Copyright 2011-2013, 2015, 2017, 2020-2021 Jonathan Rascher
 "
 " Permission to use, copy, modify, and/or distribute this software for any
 " purpose with or without fee is hereby granted, provided that the above
