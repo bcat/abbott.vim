@@ -49,4 +49,6 @@
 
 ## Version 1.0
 
-Initial upload.
+[(Full changes)](https://github.com/bcat/abbott.vim/compare/20b7361...v1.0)
+
+* [Initial upload.](https://github.com/bcat/abbott.vim/commit/20b7361)
