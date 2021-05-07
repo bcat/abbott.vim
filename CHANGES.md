@@ -1,5 +1,16 @@
 # `abbott.vim` changelog
 
+## Version 2.1
+
+[(Full changes)](https://github.com/bcat/abbott.vim/compare/v2.0...v2.1)
+
+* **Added chocolate and dark olive colors on top of core 16-color palette.**
+* Adjusted brown shades to reduce excessive contrast.
+* Fixed an incorrect ANSI color assignment.
+* Tweaked a few color assignments for greater clarity and fewer distractions.
+* Improved highlighting of diff files.
+* Switched visual selection from dark-on-light to light-on-dark colors.
+
 ## Version 2.0
 
 [(Full changes)](https://github.com/bcat/abbott.vim/compare/v1.3...v2.0)
