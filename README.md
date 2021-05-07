@@ -12,17 +12,17 @@ quantities of Mountain Dew.
 
 Because hey, it's a color scheme! That's what you really want to see, right?
 
-[![abbott.vim 2.0:
-Vimscript](https://i.imgur.com/Ca3f671.png)](https://imgur.com/Ca3f671)
+[![abbott.vim 2.1:
+Vimscript](https://i.imgur.com/TpuJttd.png)](https://imgur.com/TpuJttd)
 
-[![abbott.vim 2.0:
-Python](https://i.imgur.com/PRxNLkg.png)](https://imgur.com/PRxNLkg)
+[![abbott.vim 2.1:
+Python](https://i.imgur.com/PSZu7oU.png)](https://imgur.com/PSZu7oU)
 
-[![abbott.vim 2.0:
-Markdown](https://i.imgur.com/Yfph0g7.png)](https://imgur.com/Yfph0g7)
+[![abbott.vim 2.1:
+Markdown](https://i.imgur.com/MQA3MCi.png)](https://imgur.com/MQA3MCi)
 
-[![abbott.vim 2.0:
-C](https://i.imgur.com/GWWh6u3.png)](https://imgur.com/GWWh6u3)
+[![abbott.vim 2.1:
+C](https://i.imgur.com/rSJ2Hs4.png)](https://imgur.com/rSJ2Hs4)
 
 Compare to [screenshots from older versions](https://imgur.com/a/7woPY) to see
 how this color scheme has evolved.
