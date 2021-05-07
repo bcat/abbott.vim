@@ -59,12 +59,14 @@ let s:pastel_chartreuse = {'rgb': '#d8ff84', 'term256': '192', 'term16': '7'}
 let s:vanilla_cream = {'rgb': '#fef3b4', 'term256': '229', 'term16': '15'}
 
 " Additionally, define an extra shade of brown for use in highlighted lines and
-" columns. For 256-color terminals, we map this to a shade of gray like bistre
-" and cocoa. For 16-color terminals, since we don't have an extra color, we map
-" this to the same color as cocoa. That doesn't give a ton of contrast, but it's
-" the best we can do.
+" columns, as well as a dark green for visual selection background. For
+" 256-color terminals, we map these colors to shades of gray like bistre and
+" cocoa. For 16-color terminals, since we don't have any extra colors, we map
+" these both to the same color as cocoa. That doesn't give a ton of contrast,
+" but it's the best we can do.
 
 let s:chocolate = {'rgb': '#3c3022', 'term256': '236', 'term16': '8'}
+let s:dark_olive = {'rgb': '#273900', 'term256': '238', 'term16': '8'}
 
 " This color scheme offers some additional features that are disabled by default
 " because they may not interact well with all terminals or with other Vim color
@@ -263,9 +265,9 @@ call s:H('EndOfBuffer', {'fg': s:cocoa})
 call s:H('NonText', {'fg': s:seafoam_green})
 call s:H('SpecialKey', {'fg': s:seafoam_green})
 
-" Set a vibrant background for visual mode.
-call s:H('Visual', {'fg': s:bistre, 'bg': s:chartreuse})
-call s:H('VisualNOS', {'fg': s:bistre, 'bg': s:seafoam_green})
+" Set a dark green background for visual mode.
+call s:H('Visual', {'bg': s:dark_olive})
+call s:H('VisualNOS', {'bg': s:dark_olive})
 
 " Use cold highlights for incremental searching and warm highlights for final
 " search results.

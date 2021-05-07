@@ -38,6 +38,7 @@ true_colors=(
 
   # Additional colors:
   3c3022  # chocolate
+  273900  # dark_olive
 )
 
 indexed_colors=(
@@ -60,7 +61,8 @@ indexed_colors=(
   229  # 15: vanilla_cream
 
   # Additional colors:
-  235  # chocolate
+  236  # chocolate
+  238  # dark_olive
 )
 
 set_rgb_color () {
@@ -138,7 +140,7 @@ case $1 in
     printf '\n'
     print_colors "$1" {8..15}
     printf_white '\nAdditional colors:\n\n'
-    print_colors "$1" {16..16}
+    print_colors "$1" {16..17}
 
     # Wait for input before exiting.
     read -r
