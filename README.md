@@ -30,10 +30,10 @@ how this color scheme has evolved.
 ## Colors
 
 This color scheme uses a 16-color palette that maps nicely onto the ANSI color
-palette:
+palette, plus a couple of additional colors for terminals that allow them:
 
-[![abbott.vim: Color Palette (True
-Color)](https://i.imgur.com/v8aJdp6.png)](https://imgur.com/v8aJdp6)
+[![abbott.vim 2.1: Color Palette (True
+Color)](https://i.imgur.com/8p1dEP3.png)](https://imgur.com/8p1dEP3)
 
 `abbott.vim` looks best where RGB colors are supported, either in the gVim GUI
 or in [a terminal supporting true
@@ -41,12 +41,12 @@ colors](https://github.com/termstandard/colors) with Vim's `termguicolors`
 option enabled. You can use this color scheme in a 256-color terminal instead,
 if you like, and you'll get the following approximated palette:
 
-[![abbott.vim 2.0: Color Palette (Indexed
-Color)](https://i.imgur.com/suZb6ZH.png)](https://imgur.com/suZb6ZH)
+[![abbott.vim 2.1: Color Palette (Indexed
+Color)](https://i.imgur.com/ZkbmjkR.png)](https://imgur.com/ZkbmjkR)
 
-The colors are pretty close, but the brown colors (ANSI colors 0 and 8) are
-replaced with shades of gray since the XTerm 256-color palette doesn't have many
-shades of brown to choose from.
+The colors are pretty close, but the brown and olive colors are replaced with
+shades of gray since the XTerm 256-color palette doesn't have many shades of
+brown to choose from.
 
 ## Features
 
