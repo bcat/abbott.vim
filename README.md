@@ -13,16 +13,16 @@ quantities of Mountain Dew.
 Because hey, it's a color scheme! That's what you really want to see, right?
 
 [![abbott.vim 2.1:
-Vimscript](https://i.imgur.com/TpuJttd.png)](https://imgur.com/TpuJttd)
+Vimscript](https://i.imgur.com/TpuJttd.png)](https://i.imgur.com/TpuJttd.png)
 
 [![abbott.vim 2.1:
-Python](https://i.imgur.com/PSZu7oU.png)](https://imgur.com/PSZu7oU)
+Python](https://i.imgur.com/PSZu7oU.png)](https://i.imgur.com/PSZu7oU.png)
 
 [![abbott.vim 2.1:
-Markdown](https://i.imgur.com/MQA3MCi.png)](https://imgur.com/MQA3MCi)
+Markdown](https://i.imgur.com/MQA3MCi.png)](https://i.imgur.com/MQA3MCi.png)
 
 [![abbott.vim 2.1:
-C](https://i.imgur.com/rSJ2Hs4.png)](https://imgur.com/rSJ2Hs4)
+C](https://i.imgur.com/rSJ2Hs4.png)](https://i.imgur.com/rSJ2Hs4.png)
 
 Compare to [screenshots from older versions](https://imgur.com/a/7woPY) to see
 how this color scheme has evolved.
@@ -33,7 +33,7 @@ This color scheme uses a 16-color palette that maps nicely onto the ANSI color
 palette, plus a couple of additional colors for terminals that allow them:
 
 [![abbott.vim 2.1: Color Palette (True
-Color)](https://i.imgur.com/8p1dEP3.png)](https://imgur.com/8p1dEP3)
+Color)](https://i.imgur.com/8p1dEP3.png)](https://i.imgur.com/8p1dEP3.png)
 
 `abbott.vim` looks best where RGB colors are supported, either in the gVim GUI
 or in [a terminal supporting true
@@ -42,7 +42,7 @@ option enabled. You can use this color scheme in a 256-color terminal instead,
 if you like, and you'll get the following approximated palette:
 
 [![abbott.vim 2.1: Color Palette (Indexed
-Color)](https://i.imgur.com/ZkbmjkR.png)](https://imgur.com/ZkbmjkR)
+Color)](https://i.imgur.com/ZkbmjkR.png)](https://i.imgur.com/ZkbmjkR.png)
 
 The colors are pretty close, but the brown and olive colors are replaced with
 shades of gray since the XTerm 256-color palette doesn't have many shades of
